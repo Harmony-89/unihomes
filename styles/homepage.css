@@ -1,0 +1,165 @@
+:root {
+  --background-color: rgba(2, 0, 30, 0.893);
+  --color: white;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: var(--background-color);
+  color: var(--color);
+}
+header {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  border-bottom: 1px solid rgba(240, 255, 255, 0.097);
+  height: 80px;
+  backdrop-filter: blur(10px);
+  z-index: 99;
+}
+header h1 {
+  font-size: 2.4em;
+  margin-left: 30px;
+}
+header section {
+  margin-left: 100px;
+  width: 100%;
+  margin-right: 40px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+header section a {
+  text-decoration: none;
+  color: var(--color);
+  margin: 10px 15px;
+}
+header section .btn {
+  border: 1px solid rgb(183, 203, 207);
+  padding: 6px;
+  border-radius: 7px;
+}
+.wrapper {
+  /* border: 2px solid rgb(20, 220, 67); */
+  position: relative;
+  top:;
+  height: 100%;
+}
+.First_section {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.welcomeTitle {
+  font-size: 2.6em;
+  font-weight: bolder;
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(240, 255, 255, 0.647);
+}
+.usernote {
+  font-size: 1.7em;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+.usernote span {
+  text-transform: capitalize;
+}
+.miniTitle {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+.houseValue {
+  height: 30px;
+  width: 250px;
+  border-radius: 10px;
+  border: 0px;
+  outline: none;
+  padding-left: 10px;
+}
+.searchbtn {
+  height: 30px;
+  width: 70px;
+  border: 0px;
+  margin-left: 20px;
+}
+.houses {
+  /* border: 2px solid rgb(247, 255, 252); */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.holder {
+  height: 100%;
+  /* border: 2px solid rgb(18, 122, 84); */
+  display: grid;
+  grid-template-columns: 400px 400px 400px;
+  grid-template-rows: 300px 300px 300px;
+  gap: 30px;
+}
+.example {
+  border: 1px solid rgba(0, 247, 156, 0.666);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.example .status {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  text-transform: capitalize;
+}
+.example .status .available {
+  background: rgb(3, 138, 93);
+  padding: 0px 8px;
+  border-radius: 4px;
+}
+.example .status .details {
+  margin-left: 10px;
+  background: white;
+  color: black;
+  padding: 0px 10px;
+  border-radius: 4px;
+}
+.example .lowerdesc {
+  position: relative;
+  bottom: 23px;
+  background: white;
+  color: black;
+  height: 110px;
+  padding-left: 20px;
+}
+.example .lowerdesc .ppName {
+  text-transform: capitalize;
+  margin-bottom: 0px;
+  padding-top: 8px;
+  font-weight: 600;
+}
+.example .lowerdesc .distance {
+  margin: 0px;
+  padding-top: 6px;
+}
+.example .lowerdesc .lowerdt {
+  display: flex;
+  align-items: center;
+  position: relative;
+  bottom: 7px;
+}
+.example img {
+  height: 70%;
+  width: 100%;
+  object-fit: cover;
+}
+footer {
+  border-top: 1px solid rgba(240, 255, 255, 0.097);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

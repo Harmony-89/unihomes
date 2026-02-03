@@ -1,0 +1,104 @@
+:root{
+    --background-color:  rgba(2, 0, 30, 0.893);
+    --color: white;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: var(--background-color);
+    color: var(--color);
+}
+header{
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    border-bottom: 1px solid rgba(240, 255, 255, 0.097);
+    height: 100px;
+    backdrop-filter: blur(10px);
+    z-index: 99;
+}
+header h1{
+    font-size: 2.4em;
+    margin-left: 30px;
+}
+header section{
+    margin-left: 100px;
+    width: 100%;
+    margin-right: 40px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+header section a{
+    text-decoration: none;
+    color: var(--color);
+    margin: 10px 15px;
+}
+header section .btn{
+    border: 1px solid rgb(183, 203, 207);
+    padding: 6px;
+    border-radius: 7px;
+}
+.all{
+    /* border: 2px solid rgb(8, 220, 223);  */
+    position: relative;
+    top: 100px;  
+}
+.First_section{
+    /* border: 2px solid crimson; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.First_section form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.usernote{
+    font-size: 2.1em;
+    font-weight: bolder;
+    margin-bottom: 30px;
+}
+.usernote span{
+    text-transform: capitalize;
+}
+.houseValue{
+    height: 30px;
+    width: 300px;
+    border-radius: 10px;
+    border: 0px;
+    outline: none;
+    padding-left: 10px;
+}
+.areaName{
+    height: 20px;
+    width: 200px;
+}
+.searchbtn{
+    height: 30px;
+    width: 70px;
+    border: 0px; 
+}
+.houses{
+    border: 2px solid crimson;
+    height: 100%;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 500px 500px;
+    grid-template-rows: 400px 400px;
+    gap: 14px;
+}
+.display img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+footer{
+    border-top: 1px solid rgba(240, 255, 255, 0.097);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
