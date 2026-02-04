@@ -1,7 +1,11 @@
 <?php
 include("dbconnection.php");
+include("loginquery.php");
 
 session_start();
+// if (!isset($_SESSION["username"])) {
+//     header("Location: homepage.php");
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,14 +31,17 @@ session_start();
         <section class="First_section">
             <?php
             if (isset($_SESSION["username"])) {
-                echo "<div class='usernote'>";
+                echo "<div class='uppertag'>";
                 echo "Ready to post your property ";
                 echo "<span>";
                 echo $_SESSION["username"];
-                echo "</span>";
+                echo "</span> ";
                 echo "</div>";
             }
             ?>
+            <!-- <div class="uppertag">
+                <p>Welcome <?= $_SESSION["username"] ?>. Ready to post your property</p>
+            </div> -->
             <form action="upload.php" method="post" enctype="multipart/form-data">
                 <input type="file" name="image" class="houseValue">
                 <input type="text" name="type" class="houseType" placeholder="Enter the type of the room eg bedsitter">
@@ -45,6 +52,8 @@ session_start();
         </section>
 
 
+        <h1 class="list">Your listings</h1>
+
         <section class="houses">
             <div class="holder">
                 <?php
@@ -53,17 +62,29 @@ session_start();
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         $name = $row["place"];
-                        $rent = $row["rent"];
                         $type = $row["type"];
-                        $fileName = $row["filename"];
-                        $imageUrl = "images/" . $fileName;
-                        echo "<div class = 'scenes'>";
-                        echo "<div class = 'status'>";
-                        echo "<p class='available'>available</p>";
-                        echo "<h3>$name</h3> </br>";
-                        echo "<img src='$imageUrl'></br>";
-                        echo "</div>";
+                        $rent = $row["rent"];
+                        $imageName = $row["filename"];
+                        $imagedir = "images/" . $imageName;
+                        echo "
+                                    <div class='example'>
+                                        <div class='status'>
+                                            <p class='available'>available</p>
+                                            <p class='details'>$type</p>
+                                        </div>
+                                        <img src='$imagedir'>
+                                        <div class='lowerdesc'>
+                                            <p class='ppName'>$name</p>
+                                            <p class='distance'>4km from the University of Embu</p>
+                                            <div class='lowerdt'>
+                                                <p>
+                                                <h3>$rent</h3>/mo</p>
+                                            </div>
+                                        </div>
+                                    </div>";
                     }
+                } else {
+                    echo ("No houses available");
                 }
                 ?>
             </div>
