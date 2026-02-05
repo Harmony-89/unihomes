@@ -1,105 +1,121 @@
-:root{
-    --background-color: rgba(2, 0, 30, 0.893);
-    --font-color: rgb(239, 225, 225);
-    --styleFont-color: ghostwhite; 
+:root {
+  --background-color: rgba(2, 0, 30, 0.893);
+  --font-color: rgb(239, 225, 225);
+  --styleFont-color: ghostwhite;
 }
-body{
-    height: 100vh;
-    border: none;
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--background-color);
-    color: var(--styleFont-color);
+body {
+  height: 100vh;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-color);
+  color: var(--styleFont-color);
 }
-header{
-    position: fixed;
-    top: 0px;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    border-bottom: 1px solid rgba(240, 255, 255, 0.097);
-    height: 100px;
-    backdrop-filter: blur(10px);
-    z-index: 99;
+header {
+  position: fixed;
+  top: 0px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  border-bottom: 1px solid rgba(240, 255, 255, 0.097);
+  height: 100px;
+  backdrop-filter: blur(10px);
+  z-index: 99;
 }
-header h1{
-    font-size: 2.4em;
-    margin-left: 30px;
+header h1 {
+  font-size: 2.4em;
+  margin-left: 30px;
 }
-header section{
-    margin-left: 100px;
-    width: 100%;
-    margin-right: 100px;
-    display: flex;
-    justify-content: right;
-    align-items: center;
+header section {
+  margin-left: 100px;
+  width: 100%;
+  margin-right: 100px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
 }
-header section a{
-    text-decoration: none;
-    color: var(--color);
+header section a {
+  text-decoration: none;
+  color: var(--color);
 }
-.container{
-    background-color: rgba(137, 43, 226, 0.029);
-    border: 1px solid rgba(240, 255, 255, 0.429);
-    padding: 20px;
-    border-radius: 10px;
-    height: auto;
-    width: 400px;
+.container {
+  background-color: rgba(137, 43, 226, 0.029);
+  border: 1px solid rgba(240, 255, 255, 0.429);
+  padding: 20px;
+  border-radius: 10px;
+  height: auto;
+  width: 400px;
+  display: block;
 }
-.head{
-    text-transform: uppercase;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 10px 0px 20px 0px;
-    padding-bottom: 14px;
-    font-size: 1.45rem;
-    border-bottom: 1px solid rgba(248, 248, 255, 0.405) ;
+.container.active {
+  display: none;
 }
-.lable{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.1rem;
-    margin: 20px 0px 5px;
+.landwrapper {
+  display: none;
 }
-.accept{
-    color: var(--font-color);
-    background: transparent;
-    height: 30px;
-    border-radius: 6px;
-    width: 80%;
-    outline: 0px;
-    border: 1px solid rgba(240, 255, 255, 0.359);
+.landwrapper.active {
+  background-color: rgba(137, 43, 226, 0.029);
+  border: 1px solid rgba(240, 255, 255, 0.429);
+  padding: 20px;
+  border-radius: 10px;
+  height: auto;
+  width: 400px;
+  display: block;
 }
-.Enclosure{
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.head {
+  text-transform: uppercase;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0px 20px 0px;
+  padding-bottom: 14px;
+  font-size: 1.45rem;
+  border-bottom: 1px solid rgba(248, 248, 255, 0.405);
 }
-.button{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: var(--styleFont-color);
-    height: 30px;
-    width: 70px;
-    margin-top: 17px;
-    border-radius: 7px;
-    background: rgba(75, 71, 133, 0.403);
-    font-size: 1em;
-    margin-bottom: 10px;
+.lable {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.1rem;
+  margin: 20px 0px 5px;
 }
-.signin{
-    border-top: 1px solid rgba(248, 248, 255, 0.405) ;
-    padding-top: 10px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1rem;
+.accept {
+  color: var(--font-color);
+  background: transparent;
+  height: 30px;
+  border-radius: 6px;
+  width: 80%;
+  outline: 0px;
+  border: 1px solid rgba(240, 255, 255, 0.359);
 }
-.signin a{
-    display: inline;
-    margin-left: 6px;
-    text-decoration: none;
-    color: var(--font-color);
-    border-bottom: 1px solid var(--styleFont-color);
+.Enclosure {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.button {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: var(--styleFont-color);
+  height: 30px;
+  width: 70px;
+  margin-top: 17px;
+  border-radius: 7px;
+  background: rgba(75, 71, 133, 0.403);
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+.signin {
+  border-top: 1px solid rgba(248, 248, 255, 0.405);
+  padding-top: 10px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1rem;
+}
+.signin a {
+  display: inline;
+  margin-left: 6px;
+  text-decoration: none;
+  color: var(--font-color);
+  border-bottom: 1px solid var(--styleFont-color);
 }
