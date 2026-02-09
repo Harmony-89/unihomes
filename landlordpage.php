@@ -43,11 +43,15 @@ session_start();
                 <p>Welcome <?= $_SESSION["username"] ?>. Ready to post your property</p>
             </div> -->
             <form action="upload.php" method="post" enctype="multipart/form-data">
-                <input type="file" name="image" class="houseValue">
-                <input type="text" name="type" class="houseType" placeholder="Enter the type of the room eg bedsitter">
-                <input type="text" name="place" class="areaName" placeholder="Enter the name of the property">
-                <input type="text" name="rent" class="houseRent" placeholder="Enter the rent of the house">
-                <input type="submit" name="submitUpload" class="searchbtn" value="Upload">
+                <div class="imageinput">
+                    <input type="file" name="image" class="houseValue">
+                </div>
+                <div class="formdisplay">
+                    <input type="text" name="type" class="houseType" placeholder="Enter the type of the room eg bedsitter">
+                    <input type="text" name="place" class="areaName" placeholder="Enter the name of the property">
+                    <input type="text" name="rent" class="houseRent" placeholder="Enter the rent of the house">
+                    <input type="submit" name="submitUpload" class="searchbtn" value="Upload">
+                </div>
             </form>
         </section>
 

@@ -3,6 +3,11 @@
   --font-color: rgb(239, 225, 225);
   --styleFont-color: ghostwhite;
 }
+:root {
+  --background-color: rgba(2, 0, 30, 0.893);
+  --font-color: rgb(239, 225, 225);
+  --styleFont-color: ghostwhite;
+}
 body {
   height: 100vh;
   border: none;

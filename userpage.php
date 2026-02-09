@@ -40,7 +40,7 @@ if (!isset($_SESSION["username"])) {
             }
             ?>
             <form action="userpage.php" method="post">
-                <input type="text" name="name" class="houseValue" placeholder="Enter house type eg bedsiter">
+                <input type="text" name="name" class="houseValue" placeholder="Enter house type e.g bedsitter">
                 <input type="submit" name="submitSearch" class="searchbtn" value="Search">
             </form>
         </section>

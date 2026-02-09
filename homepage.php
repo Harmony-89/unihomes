@@ -14,31 +14,21 @@ session_start();
 </head>
 
 <body>
+    <header>
+        <h1>Unihomes</h1>
+        <section>
+            <a href="">Home</a>
+            <a href="">Listings</a>
+            <a href="loginpage.php" class="btn">Log in</a>
+            <a href="signinpage.php" class="btn">Sign in</a>
+        </section>
+    </header>
     <section class="wrapper">
-        <header>
-            <h1>Unihomes</h1>
-            <section>
-                <a href="">Home</a>
-                <a href="">Listings</a>
-                <a href="loginpage.php" class="btn">Log in</a>
-                <a href="signinpage.php" class="btn">Sign in</a>
-            </section>
-        </header>
         <section class="First_section">
             <div class="welcomeTitle">Welcome to UniNest: Your Gateway to Campus Living</div>
-            <?php
-            if (isset($_SESSION["username"])) {
-                echo "<div class='usernote'>";
-                echo "Ready to settle in ";
-                echo "<span>";
-                echo $_SESSION["username"];
-                echo "</span>";
-                echo "</div>";
-            }
-            ?>
             <div class="miniTitle">The smartest way to discover, save, and secure your university accommodation before you arrive.</div>
             <form action="">
-                <input type="text" name="name" class="houseValue" placeholder="Enter house type">
+                <input type="text" name="name" class="houseValue" placeholder="Enter house type e.g bedsitter">
                 <input type="submit" name="submitSearch" class="searchbtn" value="Search">
             </form>
         </section>

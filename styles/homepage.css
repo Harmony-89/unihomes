@@ -1,6 +1,6 @@
 :root {
-  --background-color: rgba(2, 0, 30, 0.893);
-  --color: white;
+  --background-color: rgba(255, 255, 255, 0.893);
+  --color: rgb(0, 0, 0);
 }
 body {
   margin: 0px;
@@ -13,9 +13,9 @@ header {
   align-items: center;
   position: fixed;
   width: 100%;
-  border-bottom: 1px solid rgba(240, 255, 255, 0.097);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.268);
   height: 80px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(30px);
   z-index: 99;
 }
 header h1 {
@@ -36,13 +36,15 @@ header section a {
   margin: 10px 15px;
 }
 header section .btn {
-  border: 1px solid rgb(183, 203, 207);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.442);
   padding: 6px;
   border-radius: 7px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
 }
 .wrapper {
   /* border: 2px solid rgb(20, 220, 67); */
   position: relative;
+  top: 60px;
   height: 100%;
 }
 .First_section {
@@ -58,7 +60,7 @@ header section .btn {
   text-align: center;
   margin-bottom: 30px;
   padding-bottom: 4px;
-  border-bottom: 1px solid rgba(240, 255, 255, 0.647);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.442);
 }
 .usernote {
   font-size: 1.7em;
@@ -81,12 +83,16 @@ header section .btn {
   border: 0px;
   outline: none;
   padding-left: 10px;
+  background-color: rgba(0, 0, 0, 0.132);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.442);
 }
 .searchbtn {
   height: 30px;
   width: 70px;
   border: 0px;
   margin-left: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
 }
 .houses {
   /* border: 2px solid rgb(247, 255, 252); */
@@ -103,7 +109,7 @@ header section .btn {
   gap: 30px;
 }
 .example {
-  border: 1px solid rgba(0, 247, 156, 0.666);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
   border-radius: 10px;
   overflow: hidden;
 }

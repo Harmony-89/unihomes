@@ -43,10 +43,10 @@ header section .btn {
 .all {
   /* border: 2px solid rgb(8, 220, 223); */
   position: relative;
-  top: 120px;
+  top: 200px;
 }
 .First_section {
-  border: 2px solid crimson;
+  /* border: 2px solid crimson; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,39 +61,68 @@ header section .btn {
 .uppertag span {
   text-transform: capitalize;
 }
+.First_section form {
+  /* border: 2px solid crimson; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+  height: 300px;
+  width: 1300px;
+}
+.imageinput {
+  /* border: 2px solid crimson; */
+  background: #08375b;
+  width: 450px;
+  height: 290px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+.houseValue {
+  position: relative;
+  top: 80%;
+}
+.formdisplay {
+  /* border: 2px solid crimson; */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-left: 0px;
+  padding: 40px;
+  gap: 20px;
+}
 .houseType {
+  height: 25px;
+  width: 300px;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 0px;
+}
+.areaName {
   height: 25px;
   width: 250px;
   padding-left: 10px;
   border-radius: 10px;
   border: 0px;
 }
-.areaName {
-  height: 30px;
-  width: 250px;
-  padding-left: 10px;
-  border-radius: 10px;
-  border: 0px;
-}
-.usernote span {
-  text-transform: capitalize;
-}
-.houseValue {
-  height: 30px;
-  width: 300px;
-  border-radius: 10px;
-  border: 0px;
-  outline: none;
-  padding-left: 10px;
-}
-.areaName {
-  height: 20px;
+.houseRent {
+  height: 25px;
   width: 200px;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 0px;
 }
+/* .usernote span {
+  text-transform: capitalize;
+} */
 .searchbtn {
   height: 30px;
   width: 70px;
   border: 0px;
+  border-radius: 10px;
+  text-transform: capitalize;
 }
 .list {
   text-align: center;
