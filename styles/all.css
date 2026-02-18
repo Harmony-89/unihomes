@@ -27,7 +27,7 @@ header {
   position: fixed;
   width: 100%;
   border-bottom: 1px solid rgba(240, 255, 255, 0.097);
-  height: 100px;
+  height: 70px;
   backdrop-filter: blur(10px);
   z-index: 99;
 }
@@ -70,6 +70,8 @@ header section a {
   height: auto;
   width: 400px;
   display: block;
+  position: relative;
+  top: 30px;
 }
 .head {
   text-transform: uppercase;
@@ -80,6 +82,34 @@ header section a {
   padding-bottom: 14px;
   font-size: 1.45rem;
   border-bottom: 1px solid rgba(248, 248, 255, 0.405);
+}
+.btnSwitch {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+.btnSwitch input {
+  padding: 14px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(240, 248, 255, 0.722);
+  text-transform: capitalize;
+  transition: all 0.3s linear;
+}
+.btnSwitch .student {
+  background: transparent;
+  color: var(--color);
+}
+.btnSwitch .student.active {
+  background: rgba(240, 248, 255, 0.722);
+  color: black;
+}
+.btnSwitch .landlord {
+  background: transparent;
+  color: var(--color);
+}
+.btnSwitch .landlord.active {
+  background: rgba(240, 248, 255, 0.722);
+  color: black;
 }
 .lable {
   font-family: Georgia, "Times New Roman", Times, serif;

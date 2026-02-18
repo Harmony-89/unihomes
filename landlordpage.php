@@ -1,11 +1,6 @@
 <?php
 include("dbconnection.php");
-include("loginquery.php");
-
 session_start();
-// if (!isset($_SESSION["username"])) {
-//     header("Location: homepage.php");
-// }
 ?>
 <!DOCTYPE html>
 <html lang="en">

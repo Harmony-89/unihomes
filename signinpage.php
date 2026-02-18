@@ -21,7 +21,10 @@ include("dbconnection.php");
     <form action="signinquery.php" method="post">
         <div class="container">
             <div class="head">Sign In</div>
-            <input type="button" value="landlord" id="switch">
+            <div class="btnSwitch" required>
+                <input type="button" value="student" id="switch1" class="student">
+                <input type="button" value="landlord" id="switch2" class="landlord">
+            </div>
             <div class="enterM lable"> Enter firstname</div>
             <input type="text" name="username" id="username" class="accept" required>
             <div class="enterE lable">Enter your email</div>
@@ -45,7 +48,10 @@ include("dbconnection.php");
     <form action="signinquery.php" method="post">
         <div class="landwrapper">
             <div class="head">Sign In</div>
-            <button id="switch2">landlord</button>
+            <div class="btnSwitch">
+                <input type="button" value="student" id="switch3" class="student">
+                <input type="button" value="landlord" id="switch4" class="landlord">
+            </div>
             <div class="enterM lable"> Enter firstname</div>
             <input type="text" name="username" id="username" class="accept" required>
             <div class="enterE lable">Enter your email</div>
@@ -56,7 +62,7 @@ include("dbconnection.php");
             <input type="password" name="password" id="password" class="accept" required>
             </br>
             <div class="Enclosure">
-                <input type="submit" class="button" name="signin" value="Sign in"></button>
+                <input type="submit" class="button" name="sign" value="Sign in"></button>
                 </span>
             </div>
             <div class="signin">
@@ -70,20 +76,65 @@ include("dbconnection.php");
     <script>
         var user1 = document.querySelector('.container');
         var user2 = document.querySelector('.landwrapper');
-        var button1 = document.getElementById('switch');
+        var button1 = document.getElementById('switch1');
         var button2 = document.getElementById('switch2');
-        button1.addEventListener('click', function() {
-            user1.classList.toggle('active');
-            if (user1.classList.contains('active')) {
-                user2.classList.add('active');
-            }
-        })
-        button2.addEventListener('click', function() {
+
+        var button3 = document.getElementById('switch3');
+        var button4 = document.getElementById('switch4');
+
+
+
+        button3.addEventListener("click", function() {
+            user1.classList.remove('active');
             user2.classList.remove('active');
-            if (!user2.classList.contains('active')) {
-                user1.classList.remove('active');
-            }
+            button1.classList.toggle('active');
+            button4.classList.remove('active');
         })
+        button2.addEventListener("click", function() {
+            user1.classList.toggle('active');
+            user2.classList.toggle('active');
+            button1.classList.remove('active');
+            button4.classList.add('active');
+        })
+        button1.addEventListener("click", function() {
+            button1.classList.toggle('active');
+            button2.classList.remove('active');
+        })
+        button4.addEventListener("click", function() {
+            button1.classList.remove('active');
+            button4.classList.toggle('active');
+        })
+
+
+        // button1.addEventListener('click', function() {
+        //     if (!button1.classList.contains('active')) {
+        //         button1.classList.add('active');
+        //         button2.classList.remove('active');
+
+        //     } else {
+        //         button1.classList.remove('active');
+        //     }
+        //     user1.classList.remove('active');
+        //     user2.classList.remove('active');
+        // })
+        // button2.addEventListener('click', function() {
+
+        //     if (!button2.classList.contains('active')) {
+        //         button2.classList.add('active');
+        //         button1.classList.remove('active');
+
+        //     } else {
+        //         button2.classList.remove('active');
+        //     }
+        //     user1.classList.add('active');
+        //     user2.classList.add('active');
+        // })
+
+
+        // if (user2.classList.contains('active') && user1.classList.contains('active')) {
+        //     button3.classList.add('active');
+        //     button2.classList.remove('active');
+        // }
     </script>
 </body>
 

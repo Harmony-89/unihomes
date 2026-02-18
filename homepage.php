@@ -1,7 +1,6 @@
 <?php
 include("dbconnection.php");
 
-session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +19,7 @@ session_start();
             <a href="">Home</a>
             <a href="">Listings</a>
             <a href="loginpage.php" class="btn">Log in</a>
-            <a href="signinpage.php" class="btn">Sign in</a>
+            <a href="signinpage.php" class="btn" id="sign">Sign in</a>
         </section>
     </header>
     <section class="wrapper">
@@ -78,21 +77,21 @@ session_start();
                             $imageName = $row["filename"];
                             $imagedir = "images/" . $imageName;
                             echo "
-                                    <div class='example'>
-                                        <div class='status'>
-                                            <p class='available'>available</p>
-                                            <p class='details'>$type</p>
+                                <div class='example'>
+                                    <div class='status'>
+                                        <p class='available'>available</p>
+                                        <p class='details'>$type</p>
+                                    </div>
+                                    <img src='$imagedir'>
+                                    <div class='lowerdesc'>
+                                        <p class='ppName'>$name</p>
+                                        <p class='distance'>4km from the University of Embu</p>
+                                        <div class='lowerdt'>
+                                            <p>
+                                            <h3>$rent</h3>/mo</p>
                                         </div>
-                                        <img src='$imagedir'>
-                                        <div class='lowerdesc'>
-                                            <p class='ppName'>$name</p>
-                                            <p class='distance'>4km from the University of Embu</p>
-                                            <div class='lowerdt'>
-                                                <p>
-                                                <h3>$rent</h3>/mo</p>
-                                            </div>
-                                        </div>
-                                    </div>";
+                                    </div>
+                                </div>";
                         }
                     } else {
                         echo ("No houses available");
@@ -105,6 +104,7 @@ session_start();
             <span class="copyright">&copy; 2026 UniHomes. All rights reserved</span>
         </footer>
     </section>
+
 </body>
 
 </html>
