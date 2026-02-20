@@ -26,7 +26,7 @@ include("dbconnection.php");
         <section class="First_section">
             <div class="welcomeTitle">Welcome to UniNest: Your Gateway to Campus Living</div>
             <div class="miniTitle">The smartest way to discover, save, and secure your university accommodation before you arrive.</div>
-            <form action="">
+            <form action="homepage.php" method="post">
                 <input type="text" name="name" class="houseValue" placeholder="Enter house type e.g bedsitter">
                 <input type="submit" name="submitSearch" class="searchbtn" value="Search">
             </form>

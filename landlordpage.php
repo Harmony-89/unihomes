@@ -25,18 +25,15 @@ session_start();
     <section class="all">
         <section class="First_section">
             <?php
-            if (isset($_SESSION["username"])) {
+            if (isset($_SESSION["firstName"])) {
                 echo "<div class='uppertag'>";
                 echo "Ready to post your property ";
                 echo "<span>";
-                echo $_SESSION["username"];
+                echo $_SESSION["firstName"];
                 echo "</span> ";
                 echo "</div>";
             }
             ?>
-            <!-- <div class="uppertag">
-                <p>Welcome <?= $_SESSION["username"] ?>. Ready to post your property</p>
-            </div> -->
             <form action="upload.php" method="post" enctype="multipart/form-data">
                 <div class="imageinput">
                     <input type="file" name="image" class="houseValue">

@@ -2,7 +2,7 @@
 include("dbconnection.php");
 
 session_start();
-if (!isset($_SESSION["username"])) {
+if (!isset($_SESSION["firstName"])) {
     header("Location: homepage.php");
 }
 ?>
@@ -30,11 +30,11 @@ if (!isset($_SESSION["username"])) {
     <section class="wrapper">
         <section class="First_section">
             <?php
-            if (isset($_SESSION["username"])) {
+            if (isset($_SESSION["firstName"])) {
                 echo "<div class='usernote'>";
                 echo "Ready to settle in ";
                 echo "<span>";
-                echo $_SESSION["username"];
+                echo $_SESSION["firstName"];
                 echo "</span>";
                 echo "</div>";
             }

@@ -3,11 +3,6 @@
   --font-color: rgb(239, 225, 225);
   --styleFont-color: ghostwhite;
 }
-:root {
-  --background-color: rgba(2, 0, 30, 0.893);
-  --font-color: rgb(239, 225, 225);
-  --styleFont-color: ghostwhite;
-}
 body {
   height: 100vh;
   border: none;
@@ -47,22 +42,7 @@ header section a {
   text-decoration: none;
   color: var(--color);
 }
-.container {
-  background-color: rgba(137, 43, 226, 0.029);
-  border: 1px solid rgba(240, 255, 255, 0.429);
-  padding: 20px;
-  border-radius: 10px;
-  height: auto;
-  width: 400px;
-  display: block;
-}
-.container.active {
-  display: none;
-}
 .landwrapper {
-  display: none;
-}
-.landwrapper.active {
   background-color: rgba(137, 43, 226, 0.029);
   border: 1px solid rgba(240, 255, 255, 0.429);
   padding: 20px;
@@ -94,22 +74,8 @@ header section a {
   border: 1px solid rgba(240, 248, 255, 0.722);
   text-transform: capitalize;
   transition: all 0.3s linear;
-}
-.btnSwitch .student {
   background: transparent;
-  color: var(--color);
-}
-.btnSwitch .student.active {
-  background: rgba(240, 248, 255, 0.722);
-  color: black;
-}
-.btnSwitch .landlord {
-  background: transparent;
-  color: var(--color);
-}
-.btnSwitch .landlord.active {
-  background: rgba(240, 248, 255, 0.722);
-  color: black;
+  color: var(--font-color);
 }
 .lable {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -125,25 +91,10 @@ header section a {
   outline: 0px;
   border: 1px solid rgba(240, 255, 255, 0.359);
 }
-.Enclosure {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.button {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  color: var(--styleFont-color);
-  height: 30px;
-  width: 70px;
-  margin-top: 17px;
-  border-radius: 7px;
-  background: rgba(75, 71, 133, 0.403);
-  font-size: 1em;
-  margin-bottom: 10px;
-}
 .signin {
+  margin-top: 10px;
   border-top: 1px solid rgba(248, 248, 255, 0.405);
-  padding-top: 10px;
+  padding: 10px;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 1rem;
 }

@@ -1,9 +1,16 @@
 <?php
 include("dbconnection.php");
-if (isset($_POST["signin"]) and !empty($_POST["username"])) {
-    $name = $_POST["username"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+
+$firstName = $_POST["firstName"];
+$lastName = $_POST["lastName"];
+$email = $_POST["email"];
+$password = $_POST["password"];
+$user = $_POST["user_type"];
+
+
+
+
+if ($user == "student") {
 
     $query = "SELECT * FROM users WHERE email = '$email'";
     $res = $conn->query($query);
@@ -12,10 +19,10 @@ if (isset($_POST["signin"]) and !empty($_POST["username"])) {
         header("location:loginpage.php?status=account already exists");
         exit();
     } else {
-        $query = "INSERT INTO users (username, email, password) VALUES ('$name', '$email', '$password')";
+        $query = "INSERT INTO users (firstName, lastName, email, password) VALUES ('$firstName', '$lastName', '$email', '$password')";
         $result = $conn->query($query);
 
-        $query = "SELECT * FROM users WHERE username = '$name' AND password = '$password'";
+        $query = "SELECT * FROM users WHERE firstName = '$firstName' AND password = '$password'";
         $res = $conn->query($query);
         if ($res->num_rows == 1) {
             $row = $res->fetch_assoc();
@@ -24,34 +31,24 @@ if (isset($_POST["signin"]) and !empty($_POST["username"])) {
             header("location: userpage.php");
         }
     }
-}
+} elseif ($user == "landlord") {
 
-
-
-if (isset($_POST["sign"]) and !empty($_POST["username"])) {
-    $name = $_POST["username"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-
-    $query = "SELECT * FROM landlords WHERE name = '$name' and  password = '$password'";
+    $query = "SELECT * FROM landlords WHERE firstName = '$firstName' and  password = '$password'";
     $res = $conn->query($query);
 
     if ($res->num_rows == 1) {
-        $row = $res->fetch_assoc();
-        session_start();
-        $_SESSION["username"] = $row["username"];
-        header("location: landlordpage.php");
+        header("location: loginpage.php<script> alert('Account already exists');</script>");
         exit();
     } else {
-        $query = "INSERT INTO landlords (name, email, contact, password) VALUES ('$name', '$email','$number', '$password')";
+        $query = "INSERT INTO landlords (email, firstName, lastName, password) VALUES ('$email','$firstName', '$lastName', '$password')";
         $result = $conn->query($query);
 
-        $query = "SELECT * FROM landlords WHERE name = '$name' AND password = '$password'";
+        $query = "SELECT * FROM landlords WHERE firstName = '$firstName' AND password = '$password'";
         $res = $conn->query($query);
         if ($res->num_rows == 1) {
             $row = $res->fetch_assoc();
             session_start();
-            $_SESSION["username"] = $row["username"];
+            $_SESSION["firstName"] = $row["firstName"];
             header("location: landlordpage.php");
         }
     }

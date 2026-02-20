@@ -1,0 +1,103 @@
+:root {
+  --background-color: rgba(141, 165, 219, 0.893);
+  --font-color: rgb(0, 0, 0);
+  --border-color: rgba(0, 0, 0, 0.529);
+}
+body {
+  height: 100vh;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-color);
+  color: var(--font-color);
+}
+header {
+  position: fixed;
+  top: 0px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  height: 70px;
+  backdrop-filter: blur(10px);
+  z-index: 99;
+}
+header h1 {
+  font-size: 2.4em;
+  margin-left: 30px;
+}
+header section {
+  margin-left: 100px;
+  width: 100%;
+  margin-right: 100px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+header section a {
+  text-decoration: none;
+  color: var(--font-color);
+}
+.container {
+  background-color: rgba(255, 255, 255, 0.895);
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  border-radius: 10px;
+  height: auto;
+  width: 350px;
+  display: block;
+}
+.head {
+  text-transform: uppercase;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0px 20px 0px;
+  padding-bottom: 14px;
+  font-size: 1.45rem;
+  border-bottom: 1px solid rgb(2, 2, 24);
+}
+.btnSwitch {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+.btnSwitch input {
+  padding: 14px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.722);
+  text-transform: capitalize;
+  transition: all 0.3s linear;
+}
+.lable {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.1rem;
+  margin: 20px 0px 5px;
+}
+.accept {
+  color: var(--font-color);
+  background: transparent;
+  height: 30px;
+  border-radius: 6px;
+  width: 80%;
+  outline: 0px;
+  border: 1px solid rgb(0, 0, 0);
+}
+.signin {
+  margin-top: 10px;
+  border-top: 1px solid rgb(0, 0, 0);
+  padding-top: 10px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1rem;
+}
+.signin a {
+  display: inline;
+  margin-left: 6px;
+  text-decoration: none;
+  color: rgba(137, 43, 226, 0.851);
+  border-bottom: 1px solid var(--styleFont-color);
+}
