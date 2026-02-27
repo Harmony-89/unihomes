@@ -74,6 +74,7 @@ if (!isset($_SESSION["firstName"])) {
                                             <h3>$rent</h3>/mo</p>
                                         </div>
                                     </div>
+                                    </a>
                                 </div>";
                         }
                     } else {
@@ -89,22 +90,23 @@ if (!isset($_SESSION["firstName"])) {
                             $rent = $row["rent"];
                             $imageName = $row["filename"];
                             $imagedir = "images/" . $imageName;
-                            echo "
-                                <div class='example'>
-                                    <div class='status'>
+                            echo "<div class='example'>
+                            <div class='status'>
                                         <p class='available'>available</p>
                                         <p class='details'>$type</p>
                                     </div>
                                     <img src='$imagedir'>
                                     <div class='lowerdesc'>
+                                        <a href='details.php?id=" . $row['id'] . "'>
                                         <p class='ppName'>$name</p>
+                                        </a>
                                         <p class='distance'>4km from the University of Embu</p>
                                         <div class='lowerdt'>
                                             <p>
                                             <h3>$rent</h3>/mo</p>
                                         </div>
-                                    </div>
-                                </div>";
+                                    </div>";
+                            echo "</div>";
                         }
                     } else {
                         echo ("No houses available");
