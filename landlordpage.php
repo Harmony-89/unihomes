@@ -53,16 +53,22 @@ session_start();
         <section class="houses">
             <div class="holder">
                 <?php
+                $query = "SELECT id FROM landlords WHERE firstName = '{$_SESSION['firstName']}'";
+                $select = $conn->query($query);
+                $landlord = $select->fetch_assoc();
+                $landlordId = $landlord['id'];
+
                 $query = "SELECT * FROM images";
                 $result = $conn->query($query);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        $name = $row["place"];
-                        $type = $row["type"];
-                        $rent = $row["rent"];
-                        $imageName = $row["filename"];
-                        $imagedir = "images/" . $imageName;
-                        echo "
+                        if ($landlordId == $row["owner"]) {
+                            $name = $row["place"];
+                            $type = $row["type"];
+                            $rent = $row["rent"];
+                            $imageName = $row["filename"];
+                            $imagedir = "images/" . $imageName;
+                            echo "
                                     <div class='example'>
                                         <div class='status'>
                                             <p class='available'>available</p>
@@ -78,6 +84,7 @@ session_start();
                                             </div>
                                         </div>
                                     </div>";
+                        }
                     }
                 } else {
                     echo ("No houses available");

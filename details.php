@@ -16,10 +16,7 @@ include("dbconnection.php");
     <header>
         <h1>Unihomes</h1>
         <section>
-            <a href="">Home</a>
-            <a href="">Listings</a>
-            <a href="loginpage.php" class="btn">Log in</a>
-            <a href="signinpage.php" class="btn" id="sign">Sign in</a>
+            <a href="userpage.php">Home</a>
         </section>
     </header>
     <section class="wrapper">
@@ -69,11 +66,55 @@ include("dbconnection.php");
         </div>
 
         <div class="details">
-            <div class="houseDetails">
-                listed by
-            </div>
             <div class="ownerDetails">
-                listed by
+                <span class="listed">Listed by</span>
+                <div class="ownerName">
+                    <div class="NAME">
+                        <?php
+                        $id = $_GET['id'];
+                        $query = "SELECT * FROM images WHERE id = '$id'";
+                        $result = $conn->query($query);
+                        $land = $result->fetch_assoc();
+                        $landId = $land["owner"];
+
+                        $query = "SELECT * FROM landlords WHERE id = '$landId'";
+                        $landlord = $conn->query($query);
+                        $landlordId = $landlord->fetch_assoc();
+                        $firstName = $landlordId["firstName"];
+                        $lastName = $landlordId["lastName"];
+                        echo $firstName . " " . $lastName;
+                        ?></div>
+                    <div class="reach">
+                        <p>Call</p>
+                        <p>Whatsapp</p>
+                        <p>Directions</p>
+                    </div>
+                </div>
+            </div>
+            <div class="houseDetails">
+                <div>
+                    <?php
+                    $id = $_GET['id'];
+                    $query = "SELECT * FROM images WHERE id = '$id'";
+                    $result = $conn->query($query);
+                    if ($result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
+                        $rent = $row["rent"];
+                        echo "Rent:<div class='Rent'>$rent/month</>";
+                    }
+                    ?></div>
+                <div class="moreDet">
+                    <?php
+                    $id = $_GET['id'];
+                    $query = "SELECT * FROM images WHERE id = '$id'";
+                    $result = $conn->query($query);
+                    if ($result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
+                        $type = $row["type"];
+                        echo "<p>$type</p>";
+                        echo "<p>Kangaru</p>";
+                    }
+                    ?></div>
             </div>
         </div>
     </section>
