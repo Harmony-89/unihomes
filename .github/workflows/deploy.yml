@@ -10,28 +10,14 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Debug Secrets
-        env:
-          USERNAME: ${{ secrets.FTP_USERNAME }}
-          PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          echo "Username length: ${#USERNAME}"
-          echo "Password length: ${#PASSWORD}"
-          if [ -z "$USERNAME" ]; then 
-            echo "❌ FTP_USERNAME secret is MISSING or EMPTY"
-            exit 1
-          fi
-          if [ -z "$PASSWORD" ]; then 
-            echo "❌ FTP_PASSWORD secret is MISSING or EMPTY"
-            exit 1
-          fi
-          echo "✅ Both secrets are set correctly"
-
       - name: Sync Files via FTP
+        env:
+          FTP_USERNAME: if0_013dc182
+          FTP_PASSWORD: NNa3edj8sjsa2
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftpupload.net
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          username: ${{ env.FTP_USERNAME }}
+          password: ${{ env.FTP_PASSWORD }}
           server-dir: htdocs/
           local-dir: ./
