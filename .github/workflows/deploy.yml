@@ -15,14 +15,14 @@ jobs:
           USERNAME: ${{ secrets.FTP_USERNAME }}
           PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
-          echo "Username length: ${#USERNAME:-0}"
-          echo "Password length: ${#PASSWORD:-0}"
+          echo "Username length: ${#USERNAME}"
+          echo "Password length: ${#PASSWORD}"
           if [ -z "$USERNAME" ]; then 
             echo "❌ FTP_USERNAME secret is MISSING or EMPTY"
             exit 1
           fi
           if [ -z "$PASSWORD" ]; then 
-            echo "❌ FTP_PASSWORD secret is MISSING or EMPTY" 
+            echo "❌ FTP_PASSWORD secret is MISSING or EMPTY"
             exit 1
           fi
           echo "✅ Both secrets are set correctly"
