@@ -12,8 +12,8 @@ jobs:
 
       - name: Sync Files via FTP
         env:
-          FTP_USERNAME: if0_013dc182
-          FTP_PASSWORD: NNa3edj8sjsa2
+          FTP_USERNAME: if0_41364183
+          FTP_PASSWORD: BBX21eZpmW
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftpupload.net
