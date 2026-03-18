@@ -95,57 +95,56 @@ header section .btn {
   gap: 30px;
 }
 .example {
+  position: relative;
+  /* border: 2px solid rgb(18, 122, 84); */
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
   border-radius: 10px;
   overflow: hidden;
 }
-.example .status {
+.propImg {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.example img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.overlay {
+  /* border: 2px solid rgb(122, 18, 18); */
   position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.status {
   display: flex;
   align-items: center;
   padding-left: 20px;
   text-transform: capitalize;
 }
-.example .status .available {
+.status .available {
   background: rgb(3, 138, 93);
   padding: 0px 8px;
   border-radius: 4px;
 }
-.example .status .details {
+.status .details {
   margin-left: 10px;
   background: white;
   color: black;
   padding: 0px 10px;
   border-radius: 4px;
 }
-.example .lowerdesc {
+.lowerdesc {
   position: relative;
-  bottom: 23px;
-  background: white;
+  top: 40%;
+  background: rgba(255, 255, 255, 0.115);
+  backdrop-filter: blur(5px);
   color: black;
-  height: 110px;
+  height: 240px;
   padding-left: 20px;
-}
-.example .lowerdesc .ppName {
-  text-transform: capitalize;
-  margin-bottom: 0px;
-  padding-top: 8px;
-  font-weight: 600;
-}
-.example .lowerdesc .distance {
-  margin: 0px;
-  padding-top: 6px;
-}
-.example .lowerdesc .lowerdt {
-  display: flex;
-  align-items: center;
-  position: relative;
-  bottom: 7px;
-}
-.example img {
-  height: 70%;
-  width: 100%;
-  object-fit: cover;
 }
 footer {
   border-top: 1px solid rgba(240, 255, 255, 0.097);

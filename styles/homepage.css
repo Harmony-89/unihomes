@@ -1,6 +1,8 @@
 :root {
-  --background-color: rgba(255, 255, 255, 0.893);
-  --color: rgb(0, 0, 0);
+  --background-color: rgba(250, 238, 222, 0.893);
+  /* --color: rgb(0, 0, 0); */
+  --color: rgb(255, 255, 255);
+  --color-2: rgb(255, 255, 255);
 }
 body {
   margin: 0px;
@@ -9,13 +11,15 @@ body {
   color: var(--color);
 }
 header {
+  color: var(--color-2);
   display: flex;
   align-items: center;
   position: fixed;
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.268);
   height: 80px;
-  backdrop-filter: blur(30px);
+  background: rgba(255, 255, 255, 0.197);
+  backdrop-filter: blur(7px);
   z-index: 99;
 }
 header h1 {
@@ -44,33 +48,43 @@ header section .btn {
 .wrapper {
   /* border: 2px solid rgb(20, 220, 67); */
   position: relative;
-  top: 60px;
+  /* top: 60px; */
   height: 100%;
 }
 .First_section {
-  height: 50vh;
   display: flex;
   flex-direction: column;
+  height: 90vh;
   justify-content: center;
   align-items: center;
 }
+.usernote {
+  position: relative;
+  top: 13%;
+}
+.backImage {
+  position: fixed;
+  z-index: -99;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+.backImage img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
 .welcomeTitle {
-  font-size: 2.6em;
+  color: var(--color-2);
+  font-size: 3em;
   font-weight: bolder;
   text-align: center;
   margin-bottom: 30px;
   padding-bottom: 4px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.442);
-}
-.usernote {
-  font-size: 1.7em;
-  font-weight: bolder;
-  margin-bottom: 20px;
-}
-.usernote span {
-  text-transform: capitalize;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.442);
 }
 .miniTitle {
+  color: var(--color-2);
   margin-top: 20px;
   text-align: center;
   font-size: 1.2em;
@@ -96,9 +110,16 @@ header section .btn {
 }
 .houses {
   /* border: 2px solid rgb(247, 255, 252); */
+  padding-top: 300px;
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
+  padding-bottom: 40px;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.526) 70%,
+    rgba(0, 0, 0, 0.366) 80%,
+    rgba(0, 0, 0, 0.151) 90%
+  );
 }
 .holder {
   height: 100%;
@@ -109,57 +130,58 @@ header section .btn {
   gap: 30px;
 }
 .example {
+  position: relative;
+  /* border: 2px solid rgb(18, 122, 84); */
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
   border-radius: 10px;
   overflow: hidden;
 }
-.example .status {
+.propImg {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.example img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  background: rgba(0, 0, 0, 0.819);
+  background-blend-mode: darken;
+}
+.overlay {
+  /* border: 2px solid rgb(122, 18, 18); */
   position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.status {
   display: flex;
   align-items: center;
   padding-left: 20px;
   text-transform: capitalize;
 }
-.example .status .available {
+.status .available {
   background: rgb(3, 138, 93);
   padding: 0px 8px;
   border-radius: 4px;
 }
-.example .status .details {
+.status .details {
   margin-left: 10px;
   background: white;
   color: black;
   padding: 0px 10px;
   border-radius: 4px;
 }
-.example .lowerdesc {
+.lowerdesc {
   position: relative;
-  bottom: 23px;
-  background: white;
+  top: 40%;
+  background: rgba(255, 255, 255, 0.115);
+  backdrop-filter: blur(5px);
   color: black;
-  height: 110px;
+  height: 240px;
   padding-left: 20px;
-}
-.example .lowerdesc .ppName {
-  text-transform: capitalize;
-  margin-bottom: 0px;
-  padding-top: 8px;
-  font-weight: 600;
-}
-.example .lowerdesc .distance {
-  margin: 0px;
-  padding-top: 6px;
-}
-.example .lowerdesc .lowerdt {
-  display: flex;
-  align-items: center;
-  position: relative;
-  bottom: 7px;
-}
-.example img {
-  height: 70%;
-  width: 100%;
-  object-fit: cover;
 }
 footer {
   border-top: 1px solid rgba(240, 255, 255, 0.097);

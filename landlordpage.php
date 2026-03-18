@@ -1,6 +1,9 @@
 <?php
 include("dbconnection.php");
 session_start();
+if (!isset($_SESSION["firstName"])) {
+    header("Location: homepage.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

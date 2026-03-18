@@ -67,7 +67,9 @@ if (!isset($_SESSION["firstName"])) {
                                     </div>
                                     <img src='$imagedir'>
                                     <div class='lowerdesc'>
+                                        <a href='details.php?id=" . $row['id'] . "'>
                                         <p class='ppName'>$name</p>
+                                        </a>
                                         <p class='distance'>4km from the University of Embu</p>
                                         <div class='lowerdt'>
                                             <p>
@@ -91,11 +93,14 @@ if (!isset($_SESSION["firstName"])) {
                             $imageName = $row["filename"];
                             $imagedir = "images/" . $imageName;
                             echo "<div class='example'>
+                    <div class='propImg'>
+                                    <img src='$imagedir'>
+                    </div>
+                    <div class='overlay'>
                             <div class='status'>
                                         <p class='available'>available</p>
                                         <p class='details'>$type</p>
                                     </div>
-                                    <img src='$imagedir'>
                                     <div class='lowerdesc'>
                                         <a href='details.php?id=" . $row['id'] . "'>
                                         <p class='ppName'>$name</p>
@@ -105,6 +110,7 @@ if (!isset($_SESSION["firstName"])) {
                                             <p>
                                             <h3>$rent</h3>/mo</p>
                                         </div>
+                                    </div>
                                     </div>";
                             echo "</div>";
                         }
