@@ -1,6 +1,5 @@
 <?php
 include("dbconnection.php");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +15,6 @@ include("dbconnection.php");
     <header>
         <h1>Unihomes</h1>
         <section>
-            <a href="">Home</a>
-            <a href="">Listings</a>
             <a href="loginpage.php" class="btn">Log in</a>
             <a href="signinpage.php" class="btn" id="sign">Sign in</a>
         </section>
@@ -30,18 +27,29 @@ include("dbconnection.php");
             <div class="usernote">
                 <div class="welcomeTitle">Welcome to UniNest: Your Gateway to Campus Living</div>
                 <div class="miniTitle">The smartest way to discover, save, and secure your university accommodation before you arrive.</div>
-                <form action="homepage.php" method="post">
+                <!-- <form action="homepage.php" method="post">
                     <input type="text" name="name" class="houseValue" placeholder="Enter house type e.g bedsitter">
                     <input type="submit" name="submitSearch" class="searchbtn" value="Search">
-                </form>
+                </form> -->
             </div>
         </section>
 
         <section class="houses">
+            <div class="miniHeader">Listings</div>
+            <div class="search">
+                <form action="index.php" method="post">
+                    <input type="text" name="name" class="houseValue" placeholder="Enter house type e.g bedsitter">
+                    <input type="text" name="price" class="houseValue" placeholder="Enter the rent of the house">
+                    <input type="text" name="area" class="houseValue" placeholder="Enter the location of the house">
+                    <input type="submit" name="submitSearch" class="searchbtn" value="Search">
+                </form>
+            </div>
             <div class="holder">
                 <?php
                 if (isset($_POST["submitSearch"]) and !empty($_POST["name"])) {
                     $searchType = $_POST["name"];
+                    // $searchPrice = $_POST["name"];
+                    // $searcharea = $_POST["name"];
                     $query = "SELECT * FROM images WHERE type LIKE '%$searchType%'";
                     $result = $conn->query($query);
                     if ($result->num_rows > 0) {
@@ -52,23 +60,24 @@ include("dbconnection.php");
                             $imageName = $row["filename"];
                             $imagedir = "images/" . $imageName;
                             echo "
-                                <div class='example'>
-                                    <div class='status'>
-                                        <p class='available'>available</p>
-                                        <p class='details'>$type</p>
-                                    </div>
-                                    <div class='lowerdesc'>
-                                        <p class='ppName'>$name</p>
-                                        <p class='distance'>4km from the University of Embu</p>
-                                        <div class='lowerdt'>
-                                            <p>
-                                            <h3>$rent</h3>/mo</p>
-                                        </div>
-                                    </div>
-                                    <div class='propImg'>
-                                    <img src='$imagedir'>
-                                    </div>
-                                </div>";
+                                    <div class='example'>
+                                        <a href='details.php?id=" . $row['id'] . "'>
+                                            <div class='propImg'>
+                                                <img src='$imagedir'>
+                                            </div>
+                                            </a>
+                                            <div class='overlay'>
+                                                <div class='lowerdesc'>
+                                                    <span class='ppName'>
+                                        <a href='details.php?id=" . $row['id'] . "'>$name</a></span>
+                                                    <span class='location'>Embu-kangaru</span>
+                                                    <span class='lowerdt'>
+                                                        <span class='size'>$type</span>
+                                                        <span class='price'>$rent/month</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                    </div>";
                         }
                     } else {
                         echo ("No like that available houses available");
@@ -83,27 +92,25 @@ include("dbconnection.php");
                             $rent = $row["rent"];
                             $imageName = $row["filename"];
                             $imagedir = "images/" . $imageName;
-                            echo "<div class='example'>
-                    <div class='propImg'>
-                                    <img src='$imagedir'>
-                    </div>
-                    <div class='overlay'>
-                            <div class='status'>
-                                        <p class='available'>available</p>
-                                        <p class='details'>$type</p>
-                                    </div>
-                                    <div class='lowerdesc'>
+                            echo "
+                                    <div class='example'>
                                         <a href='details.php?id=" . $row['id'] . "'>
-                                        <p class='ppName'>$name</p>
-                                        </a>
-                                        <p class='distance'>4km from the University of Embu</p>
-                                        <div class='lowerdt'>
-                                            <p>
-                                            <h3>$rent</h3>/mo</p>
-                                        </div>
-                                    </div>
+                                            <div class='propImg'>
+                                                <img src='$imagedir'>
+                                            </div>
+                                            </a>
+                                            <div class='overlay'>
+                                                <div class='lowerdesc'>
+                                                    <span class='ppName'>
+                                        <a href='details.php?id=" . $row['id'] . "'>$name</a></span>
+                                                    <span class='location'>Embu-kangaru</span>
+                                                    <span class='lowerdt'>
+                                                        <span class='size'>$type</span>
+                                                        <span class='price'>$rent/mo</span>
+                                                    </span>
+                                                </div>
+                                            </div>
                                     </div>";
-                            echo "</div>";
                         }
                     } else {
                         echo ("No houses available");

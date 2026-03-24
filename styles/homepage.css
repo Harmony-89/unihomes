@@ -1,5 +1,5 @@
 :root {
-  --background-color: rgba(11, 11, 11, 0.893);
+  --background-color: rgba(250, 238, 222, 0.893);
   /* --color: rgb(0, 0, 0); */
   --color: rgb(255, 255, 255);
   --color-2: rgb(255, 255, 255);
@@ -90,15 +90,53 @@ header section .btn {
   font-size: 1.2em;
   margin-bottom: 20px;
 }
-.houseValue {
+.houses {
+  /* border: 2px solid rgb(247, 255, 252); */
+  padding-top: 90px;
+  display: flex;
+  padding-bottom: 100px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.526) 70%,
+    rgba(0, 0, 0, 0.366) 80%,
+    rgba(0, 0, 0, 0.151) 90%
+  );
+}
+.miniHeader {
+  margin-bottom: 50px;
+  border-bottom: 1px solid var(--color-2);
+  font-size: 2.5em;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.search {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+}
+.search form {
+  display: flex;
+  gap: 40px;
+}
+.search .houseValue {
+  /* border: 2px solid crimson; */
   height: 30px;
   width: 250px;
-  border-radius: 10px;
   border: 0px;
   outline: none;
+  border-radius: 10px;
   padding-left: 10px;
-  background-color: rgba(0, 0, 0, 0.132);
+  background-color: rgba(0, 0, 0, 0.879);
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.442);
+  color: rgb(255, 179, 0);
+}
+.search .houseValue:focus {
+  border: 1px solid rgba(255, 145, 1, 0.514);
+}
+.search .houseValue::placeholder {
+  color: rgba(245, 245, 245, 0.593);
 }
 .searchbtn {
   height: 30px;
@@ -107,34 +145,40 @@ header section .btn {
   margin-left: 20px;
   border-radius: 10px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
-}
-.houses {
-  /* border: 2px solid rgb(247, 255, 252); */
-  padding-top: 300px;
-  display: flex;
-  justify-content: center;
-  padding-bottom: 40px;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.526) 70%,
-    rgba(0, 0, 0, 0.366) 80%,
-    rgba(0, 0, 0, 0.151) 90%
-  );
+  background-color: rgba(240, 162, 53, 0.814);
 }
 .holder {
   height: 100%;
   /* border: 2px solid rgb(18, 122, 84); */
   display: grid;
   grid-template-columns: 400px 400px 400px;
-  grid-template-rows: 300px 300px 300px;
   gap: 30px;
 }
 .example {
+  border: 2px solid rgb(181, 145, 109);
   position: relative;
-  /* border: 2px solid rgb(18, 122, 84); */
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
   border-radius: 10px;
   overflow: hidden;
+  z-index: 0;
+  display: grid;
+  grid-template-rows: 300px;
+  color: rgba(255, 255, 255, 0.91);
+  transition: all 0.5s linear;
+}
+.example:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
+  border: 2px solid rgb(251, 125, 0);
+  color: rgb(255, 157, 0);
+  scale: 1.01;
+  transition: all 0.3s linear;
+}
+.example:hover .ppName a {
+  color: rgb(255, 157, 0);
+  transition: all 0.3s linear;
+}
+.example:hover .propImg img {
+  scale: 1.03;
+  transition: all 0.4s linear;
 }
 .propImg {
   position: relative;
@@ -146,17 +190,11 @@ header section .btn {
   width: 100%;
   object-fit: cover;
   background: rgba(0, 0, 0, 0.819);
-  background-blend-mode: darken;
-}
-.overlay {
-  /* border: 2px solid rgb(122, 18, 18); */
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
 }
 .status {
+  position: absolute;
+  top: 0px;
+  left: 0px;
   display: flex;
   align-items: center;
   padding-left: 20px;
@@ -167,21 +205,59 @@ header section .btn {
   padding: 0px 8px;
   border-radius: 4px;
 }
-.status .details {
+/* .status .details {
   margin-left: 10px;
   background: white;
   color: black;
   padding: 0px 10px;
   border-radius: 4px;
+} */
+.overlay {
+  /* border: 5px solid rgb(122, 18, 18); */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 37%;
+  width: 100%;
 }
 .lowerdesc {
+  top: 0px;
+  left: 0px;
   position: relative;
-  top: 40%;
-  background: rgba(255, 255, 255, 0.115);
+  background: rgba(23, 11, 0, 0.681);
   backdrop-filter: blur(5px);
-  color: black;
-  height: 240px;
+  height: 100%;
   padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+}
+.ppName a {
+  color: white;
+}
+.ppName {
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.3em;
+  margin-top: 10px;
+}
+.location {
+  margin-top: 12px;
+  margin-bottom: 5px;
+}
+.lowerdt {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+.size {
+}
+.price {
+  position: relative;
+  right: 20px;
+  font-size: 1.1em;
+  font-weight: bold;
 }
 footer {
   border-top: 1px solid rgba(240, 255, 255, 0.097);
@@ -189,4 +265,6 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  background: rgba(12, 11, 11, 0.608);
+  backdrop-filter: blur(7px);
 }

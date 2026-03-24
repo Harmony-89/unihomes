@@ -15,7 +15,7 @@ include("dbconnection.php");
     <header>
         <h1>Unihomes</h1>
         <section>
-            <a href="homepage.php">Home</a>
+            <a href="index.php">Home</a>
         </section>
     </header>
     <form action="loginquery.php" method="post">
