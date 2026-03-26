@@ -1,6 +1,6 @@
 :root {
-  --background-color: rgba(141, 165, 219, 0.893);
-  --font-color: rgb(0, 0, 0);
+  --background-color: rgba(97, 58, 6, 0.69);
+  --font-color: rgb(255, 255, 255);
   --border-color: rgba(0, 0, 0, 0.529);
 }
 body {
@@ -43,13 +43,33 @@ header section a {
   color: var(--font-color);
 }
 .container {
-  background-color: rgba(255, 255, 255, 0.895);
+  background-color: rgba(143, 45, 45, 0.389);
   border: 1px solid var(--border-color);
   padding: 20px;
   border-radius: 10px;
   height: auto;
   width: 350px;
   display: block;
+}
+.backImage {
+  position: fixed;
+  z-index: -99;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+.blur {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.301);
+  backdrop-filter: blur(10px);
+  z-index: 9;
+  height: 100%;
+  width: 100%;
+}
+.backImage img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 .head {
   text-transform: uppercase;

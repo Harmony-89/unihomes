@@ -7,7 +7,8 @@ include("dbconnection.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/homepage.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="styles/index.css?v=<?php echo time(); ?>">
     <title>UniHome</title>
 </head>
 
@@ -15,8 +16,8 @@ include("dbconnection.php");
     <header>
         <h1>Unihomes</h1>
         <section>
-            <a href="loginpage.php" class="btn">Log in</a>
-            <a href="signinpage.php" class="btn" id="sign">Sign in</a>
+            <a class="btn" id="loginbtn">Log in</a>
+            <a class="btn" id="signbtn">Sign in</a>
         </section>
     </header>
     <div class="backImage">
@@ -123,6 +124,76 @@ include("dbconnection.php");
             <span class="copyright">&copy; 2026 UniHomes. All rights reserved</span>
         </footer>
     </section>
+
+    <section class="logSect">
+        <section class="login-container">
+            <form action="loginquery.php" method="post">
+                <div class="container">
+                    <div class="icon" id="exit">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <div class="head">Log In</div>
+                    <div class="btnSwitch">
+                        <input type="submit" name="user_type" value="student" id="switch3" class="student">
+                        <input type="submit" name="user_type" value="landlord" id="switch4" class="landlord">
+                    </div>
+                    <div class="Input">
+                        <input type="text" name="firstName" id="username" class="accept" required>
+                        <p class="enterM lable">Firstname</p>
+                    </div>
+                    <div class="Input">
+                        <input type="password" name="password" id="password" class="accept" required>
+                        <div class="enterP lable">Enter your password</div>
+                    </div>
+                    </br>
+                    <div class="signin">
+                        <span>Don't have an account?
+                            <a class="anchor" id="signbtn2">Sign in</a>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </section>
+
+    <section class="signSect">
+        <section class="sign-container">
+            <form action="signinquery.php" method="post">
+                <div class="landwrapper">
+                    <div class="icon" id="exit2">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <div class="head">Sign In</div>
+                    <div class="btnSwitch">
+                        <input type="submit" name="user_type" value="student" id="switch3" class="student">
+                        <input type="submit" name="user_type" value="landlord" id="switch4" class="landlord">
+                    </div>
+                    <div class="Input">
+                        <input type="text" name="firstName" id="username" class="accept" required>
+                        <div class="enterM lable"> Enter firstname</div>
+                    </div>
+                    <div class="Input">
+                        <input type="text" name="lastName" id="username" class="accept" required>
+                        <div class="enterM lable"> Enter Lastname</div>
+                    </div>
+                    <div class="Input">
+                        <input type="email" name="email" id="email" class="accept" required>
+                        <div class="enterE lable">Enter your email</div>
+                    </div>
+                    <div class="Input">
+                        <input type="password" name="password" id="password" class="accept" required>
+                        <div class="enterP lable">Enter your password</div>
+                    </div>
+                    </br>
+                    <div class="signin">
+                        <span>Already have an account?
+                            <p class="anchor" id="loginbtn2"> Log in</p>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </section>
+
+    <script src="index.js"></script>
 
 </body>
 

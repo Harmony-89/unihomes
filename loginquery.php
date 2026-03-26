@@ -14,8 +14,11 @@ if ($user == "student") {
         header("Location:userpage.php");
         exit();
     } else {
-        header("Location:loginpage.php");
-        exit();
+        echo "<script>
+            alert('Something is wrong! Please check your details.');
+            window.history.back();
+          </script>";
+        exit;
     }
 } elseif ($user == "landlord") {
 

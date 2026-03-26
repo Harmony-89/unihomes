@@ -16,8 +16,11 @@ if ($user == "student") {
     $res = $conn->query($query);
 
     if ($res->num_rows == 1) {
-        header("location:loginpage.php?status=account already exists");
-        exit();
+        echo "<script>
+            alert('Account already exists. Go back to log in');
+            window.history.back();
+          </script>";
+        exit;
     } else {
         $query = "INSERT INTO users (firstName, lastName, email, password) VALUES ('$firstName', '$lastName', '$email', '$password')";
         $result = $conn->query($query);
@@ -37,8 +40,11 @@ if ($user == "student") {
     $res = $conn->query($query);
 
     if ($res->num_rows == 1) {
-        header("location: loginpage.php<script> alert('Account already exists');</script>");
-        exit();
+        echo "<script>
+            alert('Account already exists. Go back to log in');
+            window.history.back();
+          </script>";
+        exit;
     } else {
         $query = "INSERT INTO landlords (email, firstName, lastName, password) VALUES ('$email','$firstName', '$lastName', '$password')";
         $result = $conn->query($query);

@@ -1,6 +1,6 @@
 :root {
   --background-color: rgba(250, 238, 222, 0.893);
-  /* --color: rgb(0, 0, 0); */
+  --hover-color: rgb(255, 157, 0);
   --color: rgb(255, 255, 255);
   --color-2: rgb(255, 255, 255);
 }
@@ -40,10 +40,18 @@ header section a {
   margin: 10px 15px;
 }
 header section .btn {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.442);
   padding: 6px;
   border-radius: 7px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
+  transition: all 0.3s ease;
+}
+header section .btn:hover {
+  cursor: pointer;
+  color: var(--hover-color);
+  /* box-shadow: 1px 1px 4px var(--hover-color); */
+  background: rgba(0, 0, 0, 0.716);
+  transition: all 0.3s ease;
+  scale: 1.05;
 }
 .wrapper {
   /* border: 2px solid rgb(20, 220, 67); */
@@ -163,22 +171,22 @@ header section .btn {
   display: grid;
   grid-template-rows: 300px;
   color: rgba(255, 255, 255, 0.91);
-  transition: all 0.5s linear;
+  transition: all 0.5s ease;
 }
 .example:hover {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
-  border: 2px solid rgb(251, 125, 0);
-  color: rgb(255, 157, 0);
+  border: 2px solid var(--hover-color);
+  color: var(--hover-color);
   scale: 1.01;
-  transition: all 0.3s linear;
+  transition: all 0.3s ease;
 }
 .example:hover .ppName a {
-  color: rgb(255, 157, 0);
-  transition: all 0.3s linear;
+  color: var(--hover-color);
+  transition: all 0.3s ease;
 }
 .example:hover .propImg img {
   scale: 1.03;
-  transition: all 0.4s linear;
+  transition: all 0.4s ease;
 }
 .propImg {
   position: relative;
@@ -267,4 +275,182 @@ footer {
   justify-content: space-evenly;
   background: rgba(12, 11, 11, 0.608);
   backdrop-filter: blur(7px);
+}
+
+/* LOG IN SECTION */
+.logSect {
+  display: none;
+  transition: all 1s linear;
+}
+.logSect.active {
+  transition: all 1s linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: rgba(12, 11, 11, 0.608);
+  backdrop-filter: blur(7px);
+  z-index: 9;
+}
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.container {
+  background-color: rgba(33, 17, 7, 0.46);
+  border: 1px solid rgba(193, 118, 42, 0.247);
+  padding: 20px;
+  border-radius: 10px;
+  height: auto;
+  width: 350px;
+  position: relative;
+}
+
+/* SIGN IN SECTION */
+.signSect {
+  display: none;
+  transition: all 1s linear;
+}
+.signSect.active {
+  transition: all 1s linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: rgba(12, 11, 11, 0.608);
+  backdrop-filter: blur(7px);
+  z-index: 9;
+}
+.sign-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.landwrapper {
+  background-color: rgba(72, 37, 37, 0.226);
+  border: 1px solid rgba(193, 118, 42, 0.247);
+  padding: 20px;
+  border-radius: 10px;
+  height: auto;
+  width: 400px;
+  display: block;
+  position: relative;
+  top: 30px;
+}
+
+/* BOTH LOG AND SIGN CODE */
+.icon {
+  border: 1px solid rgba(193, 118, 42, 0.247);
+  border-radius: 100px;
+  position: absolute;
+  right: 0px;
+  margin-right: 20px;
+  padding: 8px;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.icon:hover {
+  transition: all 0.3s ease;
+  border: 1px solid var(--hover-color);
+  color: var(--hover-color);
+  cursor: pointer;
+}
+.head {
+  text-transform: uppercase;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0px 20px 0px;
+  padding-bottom: 14px;
+  font-size: 1.45rem;
+  border-bottom: 1px solid rgba(248, 248, 255, 0.405);
+}
+.btnSwitch {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+.btnSwitch input {
+  padding: 14px 10px;
+  border-radius: 10px;
+  text-transform: capitalize;
+  background: transparent;
+  color: var(--color);
+  border: 1px solid rgba(240, 248, 255, 0.722);
+  transition: all 0.3s linear;
+  transition: all ease 0.3s;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 0.95rem;
+}
+.btnSwitch input:hover {
+  color: var(--hover-color);
+  border: 1px solid var(--hover-color);
+  transition: all ease 0.3s;
+}
+.Input {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.lable {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.1rem;
+  margin: 20px 0px 5px;
+  color: var(--color);
+  transition: all 0.3s ease;
+}
+.accept {
+  color: var(--font-color);
+  background: transparent;
+  height: 30px;
+  border-radius: 6px;
+  width: 80%;
+  outline: 0px;
+  border: 1px solid rgba(240, 255, 255, 0.359);
+  transition: all 0.3s ease;
+}
+.accept:focus {
+  border: 1px solid var(--hover-color);
+  transition: all 0.3s ease;
+}
+.accept:focus + .lable {
+  color: var(--hover-color);
+  transition: all 0.3s ease;
+}
+.signin {
+  margin-top: 10px;
+  border-top: 1px solid rgba(248, 248, 255, 0.405);
+  padding: 10px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+.signin .anchor {
+  display: inline;
+  margin-left: 6px;
+  color: var(--font-color);
+  border-bottom: 1px solid var(--styleFont-color);
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(240, 248, 255, 0.722);
+}
+.signin .anchor:hover {
+  border-bottom: 1px solid var(--hover-color);
+  color: var(--hover-color);
+  transition: all 0.3s ease;
 }
