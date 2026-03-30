@@ -7,7 +7,7 @@ $user = $_POST["user_type"];
 if ($user == "student") {
     $query = "SELECT * FROM users where firstName = '$firstName' and password = '$password'";
     $result = $conn->query($query);
-    if ($result->num_rows > 0) {
+    if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         session_start();
         $_SESSION["firstName"] = $row["firstName"];
@@ -24,9 +24,10 @@ if ($user == "student") {
 
     $query = "SELECT * FROM landlords where firstName = '$firstName' and password = '$password'";
     $result = $conn->query($query);
-    if ($result->num_rows > 0) {
+    if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         session_start();
+        $_SESSION["id"] = $row["id"];
         $_SESSION["firstName"] = $row["firstName"];
         header("Location:landlordpage.php");
         exit();

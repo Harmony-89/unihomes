@@ -19,49 +19,26 @@ if (!isset($_SESSION["firstName"])) {
     <header>
         <h1>Unihomes</h1>
         <section>
-            <a href="">Home</a>
             <form action="logout.php" method="post">
-                <input type="submit" name="logout" value="Logout">
+                <input type="submit" name="logout" value="Logout" class="btn">
             </form>
+            <a href="uploadpage.php" class="btn">upload</a>
         </section>
     </header>
+    <div class="backImage">
+        <img src="images/back1.jpg" alt="">
+        <div class="overlay"></div>
+    </div>
     <section class="all">
-        <section class="First_section">
-            <?php
-            if (isset($_SESSION["firstName"])) {
-                echo "<div class='uppertag'>";
-                echo "Ready to post your property ";
-                echo "<span>";
-                echo $_SESSION["firstName"];
-                echo "</span> ";
-                echo "</div>";
-            }
-            ?>
-            <form action="upload.php" method="post" enctype="multipart/form-data">
-                <div class="imageinput">
-                    <input type="file" name="image" class="houseValue">
-                </div>
-                <div class="formdisplay">
-                    <input type="text" name="type" class="houseType" placeholder="Enter the type of the room eg bedsitter">
-                    <input type="text" name="place" class="areaName" placeholder="Enter the name of the property">
-                    <input type="text" name="rent" class="houseRent" placeholder="Enter the rent of the house">
-                    <input type="submit" name="submitUpload" class="searchbtn" value="Upload">
-                </div>
-            </form>
-        </section>
 
-
-        <h1 class="list">Your listings</h1>
+        <h1 class="list">Your listings <?php echo $_SESSION["firstName"]; ?></h1>
 
         <section class="houses">
             <div class="holder">
                 <?php
-                $query = "SELECT id FROM landlords WHERE firstName = '{$_SESSION['firstName']}'";
-                $select = $conn->query($query);
-                $landlord = $select->fetch_assoc();
-                $landlordId = $landlord['id'];
 
-                $query = "SELECT * FROM images";
+                $landlordId = $_SESSION["id"];
+                $query = "SELECT * FROM images WHERE owner = '$landlordId'";
                 $result = $conn->query($query);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
@@ -69,28 +46,30 @@ if (!isset($_SESSION["firstName"])) {
                             $name = $row["place"];
                             $type = $row["type"];
                             $rent = $row["rent"];
-                            $imageName = $row["filename"];
-                            $imagedir = "images/" . $imageName;
+                            $imagedir = $row["filename"];
                             echo "
                                     <div class='example'>
-                                        <div class='status'>
-                                            <p class='available'>available</p>
-                                            <p class='details'>$type</p>
-                                        </div>
-                                        <img src='$imagedir'>
-                                        <div class='lowerdesc'>
-                                            <p class='ppName'>$name</p>
-                                            <p class='distance'>4km from the University of Embu</p>
-                                            <div class='lowerdt'>
-                                                <p>
-                                                <h3>$rent</h3>/mo</p>
+                                        <a href='details.php?id=" . $row['id'] . "'>
+                                            <div class='propImg'>
+                                                <img src='$imagedir'>
                                             </div>
-                                        </div>
+                                            </a>
+                                            <div class='overlay'>
+                                                <div class='lowerdesc'>
+                                                    <span class='ppName'>
+                                        <a href='details.php?id=" . $row['id'] . "'>$name</a></span>
+                                                    <span class='location'>Embu-kangaru</span>
+                                                    <span class='lowerdt'>
+                                                        <span class='size'>$type</span>
+                                                        <span class='price'>$rent/month</span>
+                                                    </span>
+                                                </div>
+                                            </div>
                                     </div>";
                         }
                     }
                 } else {
-                    echo ("No houses available");
+                    echo ("You have not posted any houses");
                 }
                 ?>
             </div>

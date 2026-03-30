@@ -1,5 +1,5 @@
 :root {
-  --background-color: rgba(250, 238, 222, 0.893);
+  --background-color: rgba(54, 32, 2, 0.893);
   --hover-color: rgb(255, 157, 0);
   --color: rgb(255, 255, 255);
   --color-2: rgb(255, 255, 255);
@@ -154,6 +154,12 @@ header section .btn:hover {
   border-radius: 10px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
   background-color: rgba(240, 162, 53, 0.814);
+  transition: all 0.3s ease;
+}
+.searchbtn:hover {
+  background-color: rgb(255, 149, 0);
+  color: azure;
+  transition: all 0.3s ease;
 }
 .holder {
   height: 100%;
@@ -340,7 +346,7 @@ footer {
   width: 100%;
 }
 .landwrapper {
-  background-color: rgba(72, 37, 37, 0.226);
+  background-color: rgba(33, 17, 7, 0.46);
   border: 1px solid rgba(193, 118, 42, 0.247);
   padding: 20px;
   border-radius: 10px;
@@ -427,6 +433,7 @@ footer {
 .accept:focus {
   border: 1px solid var(--hover-color);
   transition: all 0.3s ease;
+  color: var(--hover-color);
 }
 .accept:focus + .lable {
   color: var(--hover-color);

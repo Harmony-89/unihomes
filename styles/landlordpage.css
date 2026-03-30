@@ -1,6 +1,8 @@
 :root {
-  --background-color: rgba(2, 0, 30, 0.893);
-  --color: white;
+  --background-color: rgba(54, 32, 2, 0.893);
+  --hover-color: rgb(255, 157, 0);
+  --color: rgb(255, 255, 255);
+  --color-2: rgb(255, 255, 255);
 }
 body {
   margin: 0px;
@@ -14,9 +16,10 @@ header {
   position: fixed;
   width: 100%;
   border-bottom: 1px solid rgba(240, 255, 255, 0.097);
-  height: 100px;
+  height: 80px;
   backdrop-filter: blur(10px);
   z-index: 99;
+  top: 0px;
 }
 header h1 {
   font-size: 2.4em;
@@ -36,98 +39,56 @@ header section a {
   margin: 10px 15px;
 }
 header section .btn {
-  border: 1px solid rgb(183, 203, 207);
-  padding: 6px;
+  padding: 10px;
   border-radius: 7px;
+  background: rgba(0, 0, 0, 0.071);
+  color: var(--color-2);
+  border: 0px;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.442);
+  transition: all 0.3s ease;
+}
+header section .btn:hover {
+  cursor: pointer;
+  color: var(--hover-color);
+  /* box-shadow: 1px 1px 4px var(--hover-color); */
+  background: rgba(0, 0, 0, 0.716);
+  transition: all 0.3s ease;
+  scale: 1.05;
+}
+.backImage {
+  position: fixed;
+  z-index: -99;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  top: 0px;
+  /* border: 2px solid rgb(8, 220, 223); */
+}
+.backImage img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.backImage .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.338);
 }
 .all {
   /* border: 2px solid rgb(8, 220, 223); */
   position: relative;
   top: 200px;
 }
-.First_section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 50px;
-  height: 500px;
-}
-.uppertag {
-  /* border: 2px solid crimson; */
-  font-size: 2.1em;
-  font-weight: bolder;
-  margin-bottom: 50px;
-}
-.uppertag span {
-  text-transform: capitalize;
-}
-.First_section form {
-  /* border: 2px solid crimson; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  padding: 20px;
-  height: 300px;
-  width: 1300px;
-}
-.imageinput {
-  /* border: 2px solid crimson; */
-  background: #08375b;
-  width: 450px;
-  height: 290px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-}
-.houseValue {
-  position: relative;
-  top: 80%;
-}
-.formdisplay {
-  /* border: 2px solid crimson; */
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-left: 0px;
-  padding: 40px;
-  gap: 20px;
-}
-.houseType {
-  height: 25px;
-  width: 300px;
-  padding-left: 10px;
-  border-radius: 10px;
-  border: 0px;
-}
-.areaName {
-  height: 25px;
-  width: 250px;
-  padding-left: 10px;
-  border-radius: 10px;
-  border: 0px;
-}
-.houseRent {
-  height: 25px;
-  width: 200px;
-  padding-left: 10px;
-  border-radius: 10px;
-  border: 0px;
-}
-/* .usernote span {
-  text-transform: capitalize;
-} */
-.searchbtn {
-  height: 30px;
-  width: 70px;
-  border: 0px;
-  border-radius: 10px;
-  text-transform: capitalize;
-}
 .list {
   text-align: center;
   margin-bottom: 50px;
   text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-transform: capitalize;
 }
 .houses {
   /* border: 2px solid rgb(247, 255, 252); */
@@ -140,61 +101,112 @@ header section .btn {
   /* border: 2px solid rgb(18, 122, 84); */
   display: grid;
   grid-template-columns: 400px 400px 400px;
-  grid-template-rows: 300px 300px 300px;
   gap: 30px;
 }
 .example {
-  border: 1px solid rgba(0, 247, 156, 0.666);
+  border: 2px solid rgb(181, 145, 109);
+  position: relative;
   border-radius: 10px;
   overflow: hidden;
+  z-index: 0;
+  display: grid;
+  grid-template-rows: 300px;
+  color: rgba(255, 255, 255, 0.91);
+  transition: all 0.5s ease;
 }
-.example .status {
+.example:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
+  border: 2px solid var(--hover-color);
+  color: var(--hover-color);
+  scale: 1.01;
+  transition: all 0.3s ease;
+}
+.example:hover .ppName a {
+  color: var(--hover-color);
+  transition: all 0.3s ease;
+}
+.example:hover .propImg img {
+  scale: 1.03;
+  transition: all 0.4s ease;
+}
+.propImg {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.example img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  background: rgba(0, 0, 0, 0.819);
+}
+.status {
   position: absolute;
+  top: 0px;
+  left: 0px;
   display: flex;
   align-items: center;
   padding-left: 20px;
   text-transform: capitalize;
 }
-.example .status .available {
+.status .available {
   background: rgb(3, 138, 93);
   padding: 0px 8px;
   border-radius: 4px;
 }
-.example .status .details {
+/* .status .details {
   margin-left: 10px;
   background: white;
   color: black;
   padding: 0px 10px;
   border-radius: 4px;
+} */
+.overlay {
+  /* border: 5px solid rgb(122, 18, 18); */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 37%;
+  width: 100%;
 }
-.example .lowerdesc {
+.lowerdesc {
+  top: 0px;
+  left: 0px;
   position: relative;
-  bottom: 23px;
-  background: white;
-  color: black;
-  height: 110px;
+  background: rgba(23, 11, 0, 0.681);
+  backdrop-filter: blur(5px);
+  height: 100%;
   padding-left: 20px;
-}
-.example .lowerdesc .ppName {
+  display: flex;
+  flex-direction: column;
   text-transform: capitalize;
-  margin-bottom: 0px;
-  padding-top: 8px;
-  font-weight: 600;
 }
-.example .lowerdesc .distance {
-  margin: 0px;
-  padding-top: 6px;
+.ppName a {
+  color: white;
 }
-.example .lowerdesc .lowerdt {
+.ppName {
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.3em;
+  margin-top: 10px;
+}
+.location {
+  margin-top: 12px;
+  margin-bottom: 5px;
+}
+.lowerdt {
   display: flex;
   align-items: center;
-  position: relative;
-  bottom: 7px;
-}
-.example img {
-  height: 70%;
   width: 100%;
-  object-fit: cover;
+  justify-content: space-between;
+}
+.size {
+}
+.price {
+  position: relative;
+  right: 20px;
+  font-size: 1.1em;
+  font-weight: bold;
 }
 footer {
   border-top: 1px solid rgba(240, 255, 255, 0.097);

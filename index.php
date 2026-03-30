@@ -17,7 +17,7 @@ include("dbconnection.php");
         <h1>Unihomes</h1>
         <section>
             <a class="btn" id="loginbtn">Log in</a>
-            <a class="btn" id="signbtn">Sign in</a>
+            <a class="btn" id="signbtn">Sign up</a>
         </section>
     </header>
     <div class="backImage">
@@ -28,96 +28,21 @@ include("dbconnection.php");
             <div class="usernote">
                 <div class="welcomeTitle">Welcome to UniNest: Your Gateway to Campus Living</div>
                 <div class="miniTitle">The smartest way to discover, save, and secure your university accommodation before you arrive.</div>
-                <!-- <form action="homepage.php" method="post">
-                    <input type="text" name="name" class="houseValue" placeholder="Enter house type e.g bedsitter">
-                    <input type="submit" name="submitSearch" class="searchbtn" value="Search">
-                </form> -->
             </div>
         </section>
 
         <section class="houses">
             <div class="miniHeader">Listings</div>
             <div class="search">
-                <form action="index.php" method="post">
+                <form action="indexHouses.php" method="get" id="searchForm">
                     <input type="text" name="name" class="houseValue" placeholder="Enter house type e.g bedsitter">
                     <input type="text" name="price" class="houseValue" placeholder="Enter the rent of the house">
                     <input type="text" name="area" class="houseValue" placeholder="Enter the location of the house">
                     <input type="submit" name="submitSearch" class="searchbtn" value="Search">
                 </form>
             </div>
-            <div class="holder">
-                <?php
-                if (isset($_POST["submitSearch"]) and !empty($_POST["name"])) {
-                    $searchType = $_POST["name"];
-                    // $searchPrice = $_POST["name"];
-                    // $searcharea = $_POST["name"];
-                    $query = "SELECT * FROM images WHERE type LIKE '%$searchType%'";
-                    $result = $conn->query($query);
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            $name = $row["place"];
-                            $type = $row["type"];
-                            $rent = $row["rent"];
-                            $imageName = $row["filename"];
-                            $imagedir = "images/" . $imageName;
-                            echo "
-                                    <div class='example'>
-                                        <a href='details.php?id=" . $row['id'] . "'>
-                                            <div class='propImg'>
-                                                <img src='$imagedir'>
-                                            </div>
-                                            </a>
-                                            <div class='overlay'>
-                                                <div class='lowerdesc'>
-                                                    <span class='ppName'>
-                                        <a href='details.php?id=" . $row['id'] . "'>$name</a></span>
-                                                    <span class='location'>Embu-kangaru</span>
-                                                    <span class='lowerdt'>
-                                                        <span class='size'>$type</span>
-                                                        <span class='price'>$rent/month</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                    </div>";
-                        }
-                    } else {
-                        echo ("No like that available houses available");
-                    }
-                } else {
-                    $query = "SELECT * FROM images";
-                    $result = $conn->query($query);
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            $name = $row["place"];
-                            $type = $row["type"];
-                            $rent = $row["rent"];
-                            $imageName = $row["filename"];
-                            $imagedir = "images/" . $imageName;
-                            echo "
-                                    <div class='example'>
-                                        <a href='details.php?id=" . $row['id'] . "'>
-                                            <div class='propImg'>
-                                                <img src='$imagedir'>
-                                            </div>
-                                            </a>
-                                            <div class='overlay'>
-                                                <div class='lowerdesc'>
-                                                    <span class='ppName'>
-                                        <a href='details.php?id=" . $row['id'] . "'>$name</a></span>
-                                                    <span class='location'>Embu-kangaru</span>
-                                                    <span class='lowerdt'>
-                                                        <span class='size'>$type</span>
-                                                        <span class='price'>$rent/mo</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                    </div>";
-                        }
-                    } else {
-                        echo ("No houses available");
-                    }
-                }
-                ?>
+            <div class="holder" id="holder">
+
         </section>
         <footer>
             <span class="miniName">UniHousing</span>
@@ -194,6 +119,33 @@ include("dbconnection.php");
     </section>
 
     <script src="index.js"></script>
+    <script>
+        const searchForm = document.getElementById('searchForm');
+        const houseHolder = document.getElementById('holder'); // Ensure your div ID is 'holder'
+
+        function getHouses(query = '') {
+            fetch('indexHouses.php?' + query)
+                .then(response => response.text())
+                .then(data => {
+                    houseHolder.innerHTML = data;
+                });
+        }
+
+        // Load initial houses
+        window.onload = () => getHouses();
+
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(searchForm);
+            // FIX: Corrected spelling here
+            const queryString = new URLSearchParams(formData).toString();
+
+            console.log("Sending to PHP: ", queryString);
+            getHouses(queryString);
+        });
+    </script>
+
 
 </body>
 

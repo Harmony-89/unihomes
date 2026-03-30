@@ -1,6 +1,8 @@
 :root {
-  --background-color: rgba(255, 255, 255, 0.893);
-  --color: rgb(0, 0, 0);
+  --background-color: rgba(54, 32, 2, 0.893);
+  --hover-color: rgb(255, 157, 0);
+  --color: rgb(255, 255, 255);
+  --color-2: rgb(255, 255, 255);
 }
 body {
   margin: 0px;
@@ -36,54 +38,185 @@ header section a {
   margin: 10px 15px;
 }
 header section .btn {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.442);
-  padding: 6px;
+  padding: 10px;
   border-radius: 7px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
+  background: rgba(0, 0, 0, 0.071);
+  color: var(--color-2);
+  border: 0px;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.442);
+  transition: all 0.3s ease;
 }
-.wrapper {
-  position: relative;
-  top: 110px;
-  /* border: 2px solid crimson; */
+header section .btn:hover {
+  cursor: pointer;
+  color: var(--hover-color);
+  /* box-shadow: 1px 1px 4px var(--hover-color); */
+  background: rgba(0, 0, 0, 0.716);
+  transition: all 0.3s ease;
+  scale: 1.05;
 }
-.imageGrid {
-  /* border: 2px solid black; */
-  display: grid;
-  grid-template-columns: 760px 200px 200px;
-  grid-template-rows: 280px 200px 200px;
-  gap: 30px;
-  padding-left: 120px;
-  height: 79vh;
+.backImage {
+  position: fixed;
+  z-index: -99;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
 }
-.imageGrid .mainImg {
-  grid-row: span 2;
-}
-.imageGrid div {
-  /* border: 2px solid black; */
-}
-.imageGrid img {
-  box-sizing: border-box;
+.backImage img {
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+.backImage .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.066);
+  backdrop-filter: blur(4px);
+}
+.wrapper {
+  position: relative;
+  top: 90px;
+  /* border: 2px solid crimson; */
+}
+.displayArea {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  padding-left: 40px;
+  margin-bottom: 70px;
+}
+.mainImage {
+  width: 94%;
+  height: 85vh;
+  margin-bottom: 30px;
   border-radius: 10px;
-  box-shadow: 1px 1px 10px rgba(110, 153, 144, 0.555);
+  overflow: hidden;
+}
+#main-display {
+  transition: opacity 0.3s ease-in-out;
+  object-fit: cover;
+}
+
+.mainImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.mainImage .overlay {
+  position: relative;
+  height: 190px;
+  width: 100%;
+  /* border: 2px solid crimson; */
+  bottom: 190px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0.548) 43%,
+    rgba(0, 0, 0, 0.826) 90%
+  );
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  text-transform: capitalize;
+}
+.mainImage .overlay p:nth-child(1) {
+  font-size: 3em;
+  font-weight: bolder;
+  border-radius: 20px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+  margin-bottom: 0px;
+}
+.pin {
+  display: flex;
+  align-items: center;
+  font-size: 1.3em;
+}
+.pin i {
+  color: var(--hover-color);
+}
+.imageGrid {
+  position: absolute;
+  left: 60px;
+  height: 300px;
+  width: 120px;
+  /* border: 2px solid crimson; */
+  padding: 15px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  border-radius: 35px;
+  top: 10%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space: nowrap;
+  scrollbar-gutter: stable both-edges;
+  transition: all 0.3s ease;
+  clip-path: inset(0 round 35px);
+}
+.imageGrid:hover {
+  background: rgba(30, 24, 24, 0.44);
+  backdrop-filter: blur(2px);
+  transition: all 0.3s ease;
+}
+.imageGrid::-webkit-scrollbar {
+  width: 4px;
+  display: none;
+  transition: all 0.3s ease;
+}
+.imageGrid:hover::-webkit-scrollbar {
+  display: block;
+  transition: all 0.3s ease;
+}
+.imageGrid::-webkit-scrollbar-track {
+  background: transparent;
+}
+.imageGrid::-webkit-scrollbar-thumb {
+  background: rgb(234, 145, 21);
+  border-radius: 10px;
+}
+.imageGrid div {
+  flex-shrink: 0;
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 3px 3px 20px rgb(0, 0, 0);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.imageGrid div:hover {
+  box-shadow: 1px 1px 20px var(--hover-color);
+  scale: 1.05;
+  transition: all 0.3s ease;
+}
+.imageGrid div img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 .details {
-  /* border: 2px solid black; */
+  /* border: 2px solid rgb(255, 0, 0); */
   margin-top: 0px;
-  height: 50vh;
+  height: 40vh;
+  padding-top: 50px;
+  backdrop-filter: blur(8px);
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.overlay2 {
+  width: 70vw;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding-left: 90px;
-}
-.imageName {
-  text-align: center;
-  font-size: xx-large;
-  font-weight: bolder;
-  margin-bottom: 25px;
-  text-decoration: underline;
-  text-transform: capitalize;
+  gap: 40px;
 }
 .ownerDetails {
   /* border: 2px solid green; */
@@ -91,46 +224,85 @@ header section .btn {
   /* margin-left: 20px; */
 }
 .listed {
-  font-size: 1.8rem;
-  font-weight: 800;
+  font-size: 1.2rem;
 }
 .ownerName {
-  border: 1px solid grey;
-  width: 400px;
-  border-radius: 10px;
-  padding: 20px 30px 10px 30px;
-  margin-top: 40px;
-  text-align: center;
-}
-.NAME {
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   font-weight: 800;
-  border-bottom: 1px solid grey;
-  padding-bottom: 10px;
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-left: 30px;
   text-transform: capitalize;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  /* border: 3px solid crimson; */
 }
 .reach {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  gap: 50px;
+  gap: 0px;
   margin-top: 20px;
   margin-bottom: 10px;
 }
-.reach p {
-  border: 1px solid green;
-  padding: 4px 10px;
-  border-radius: 10px;
+
+.reach span {
+  /* border: 1px solid green; */
+  width: 50%;
+  font-size: 1.1em;
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
 }
+.reach span .namer {
+  color: var(--hover-color);
+  margin-right: 6px;
+}
+.reach i {
+  color: var(--hover-color);
+  font-size: 1.2em;
+  margin-right: 5px;
+}
+.errorname {
+  font-size: 1.3em;
+  color: var(--hover-color);
+  margin-top: 50px;
+}
+
 .houseDetails {
-  border-left: 1px solid grey;
+  border-right: 1px solid grey;
   padding-left: 50px;
   text-transform: capitalize;
-}
-.moreDet {
-  margin-top: 30px;
+  padding-top: 40px;
 }
 .Rent {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 800;
+  color: var(--hover-color);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+.moreDet {
+  margin-top: 20px;
+}
+.moreDet span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1em;
+}
+.moreDet span i {
+  color: var(--hover-color);
+  font-size: 1.3em;
+}
+footer {
+  border-top: 1px solid rgba(240, 255, 255, 0.097);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  left: 0px;
+  width: 100%;
 }

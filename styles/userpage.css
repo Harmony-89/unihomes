@@ -1,6 +1,8 @@
 :root {
-  --background-color: rgba(255, 255, 255, 0.893);
-  --color: rgb(0, 0, 0);
+  --background-color: rgba(54, 32, 2, 0.893);
+  --hover-color: rgb(255, 157, 0);
+  --color: rgb(255, 255, 255);
+  --color-2: rgb(255, 255, 255);
 }
 body {
   margin: 0px;
@@ -9,13 +11,15 @@ body {
   color: var(--color);
 }
 header {
+  color: var(--color-2);
   display: flex;
   align-items: center;
   position: fixed;
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.268);
   height: 80px;
-  backdrop-filter: blur(30px);
+  /* background: rgba(255, 255, 255, 0.197); */
+  backdrop-filter: blur(7px);
   z-index: 99;
 }
 header h1 {
@@ -25,25 +29,32 @@ header h1 {
 header section {
   margin-left: 100px;
   width: 100%;
-  margin-right: 40px;
+  margin-right: 80px;
   display: flex;
   justify-content: right;
   align-items: center;
 }
-header section a {
-  text-decoration: none;
-  color: var(--color);
-  margin: 10px 15px;
-}
 header section .btn {
-  border: 1px solid rgb(183, 203, 207);
-  padding: 6px;
+  padding: 10px;
   border-radius: 7px;
+  background: rgba(0, 0, 0, 0.071);
+  color: var(--color-2);
+  border: 0px;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.442);
+  transition: all 0.3s ease;
+}
+header section .btn:hover {
+  cursor: pointer;
+  color: var(--hover-color);
+  /* box-shadow: 1px 1px 4px var(--hover-color); */
+  background: rgba(0, 0, 0, 0.716);
+  transition: all 0.3s ease;
+  scale: 1.05;
 }
 .wrapper {
   /* border: 2px solid rgb(20, 220, 67); */
   position: relative;
-  top: 120px;
+  top: 200px;
   height: 100%;
 }
 .First_section {
@@ -57,28 +68,52 @@ header section .btn {
   font-size: 2.1em;
   font-weight: bolder;
   margin-bottom: 40px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.549);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.73);
 }
 .usernote span {
   text-transform: capitalize;
 }
+.backImage {
+  position: fixed;
+  z-index: -99;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+.backImage img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
 .houseValue {
+  /* border: 2px solid crimson; */
   height: 30px;
-  width: 300px;
-  border-radius: 10px;
+  width: 250px;
   border: 0px;
   outline: none;
+  border-radius: 10px;
   padding-left: 10px;
-  background-color: rgba(0, 0, 0, 0.132);
+  background-color: rgba(0, 0, 0, 0.879);
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.442);
+  color: rgb(255, 179, 0);
+}
+.houseValue:focus {
+  border: 1px solid rgba(255, 145, 1, 0.514);
 }
 .searchbtn {
   height: 30px;
   width: 70px;
   border: 0px;
-  margin-left: 40px;
+  margin-left: 20px;
   border-radius: 10px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
+  background-color: rgba(240, 162, 53, 0.814);
+  transition: all 0.3s ease;
+}
+.searchbtn:hover {
+  background-color: rgb(255, 149, 0);
+  color: azure;
+  transition: all 0.3s ease;
 }
 .houses {
   /* border: 2px solid rgb(247, 255, 252); */
@@ -91,15 +126,33 @@ header section .btn {
   /* border: 2px solid rgb(18, 122, 84); */
   display: grid;
   grid-template-columns: 400px 400px 400px;
-  grid-template-rows: 300px 300px 300px;
   gap: 30px;
 }
 .example {
+  border: 2px solid rgb(181, 145, 109);
   position: relative;
-  /* border: 2px solid rgb(18, 122, 84); */
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
   border-radius: 10px;
   overflow: hidden;
+  z-index: 0;
+  display: grid;
+  grid-template-rows: 300px;
+  color: rgba(255, 255, 255, 0.91);
+  transition: all 0.5s ease;
+}
+.example:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.442);
+  border: 2px solid var(--hover-color);
+  color: var(--hover-color);
+  scale: 1.01;
+  transition: all 0.3s ease;
+}
+.example:hover .ppName a {
+  color: var(--hover-color);
+  transition: all 0.3s ease;
+}
+.example:hover .propImg img {
+  scale: 1.03;
+  transition: all 0.4s ease;
 }
 .propImg {
   position: relative;
@@ -110,16 +163,12 @@ header section .btn {
   height: 100%;
   width: 100%;
   object-fit: cover;
-}
-.overlay {
-  /* border: 2px solid rgb(122, 18, 18); */
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+  background: rgba(0, 0, 0, 0.819);
 }
 .status {
+  position: absolute;
+  top: 0px;
+  left: 0px;
   display: flex;
   align-items: center;
   padding-left: 20px;
@@ -130,21 +179,59 @@ header section .btn {
   padding: 0px 8px;
   border-radius: 4px;
 }
-.status .details {
+/* .status .details {
   margin-left: 10px;
   background: white;
   color: black;
   padding: 0px 10px;
   border-radius: 4px;
+} */
+.overlay {
+  /* border: 5px solid rgb(122, 18, 18); */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 37%;
+  width: 100%;
 }
 .lowerdesc {
+  top: 0px;
+  left: 0px;
   position: relative;
-  top: 40%;
-  background: rgba(255, 255, 255, 0.115);
+  background: rgba(23, 11, 0, 0.681);
   backdrop-filter: blur(5px);
-  color: black;
-  height: 240px;
+  height: 100%;
   padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+}
+.ppName a {
+  color: white;
+}
+.ppName {
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.3em;
+  margin-top: 10px;
+}
+.location {
+  margin-top: 12px;
+  margin-bottom: 5px;
+}
+.lowerdt {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+.size {
+}
+.price {
+  position: relative;
+  right: 20px;
+  font-size: 1.1em;
+  font-weight: bold;
 }
 footer {
   border-top: 1px solid rgba(240, 255, 255, 0.097);

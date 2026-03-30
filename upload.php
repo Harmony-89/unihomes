@@ -6,34 +6,60 @@ if (isset($_POST["submitUpload"])) {
     $place = $_POST["place"];
     $type = $_POST["type"];
     $rent = $_POST["rent"];
-    $fileName = $_FILES["image"]["name"];
-    $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+    $location = $_POST["area"];
+    $number = $_POST["number"];
+    $landlordId = $_SESSION["id"];
+
+
+    $mainFileName = $_FILES["image"]["name"];
+    $mainTmpName = $_FILES["image"]["tmp_name"];
+    $mainExt = strtolower(pathinfo($mainFileName, PATHINFO_EXTENSION));
     $allowedTypes = array("jpg", "jpeg", "png", "gif");
-    $tmpName = $_FILES["image"]["tmp_name"];
-    $targetPath = "images/" . $fileName;
+    $mainTargetPath = "images/" . time() . "_" . $mainFileName;
 
-    $query = "SELECT id FROM landlords WHERE firstName = '{$_SESSION['firstName']}'";
-    $select = $conn->query($query);
-    $landlord = $select->fetch_assoc();
-    $landlordId = $landlord['id'];
+    if (in_array($mainExt, $allowedTypes)) {
+        if (move_uploaded_file($mainTmpName, $mainTargetPath)) {
 
-    if (in_array($ext, $allowedTypes)) {
-        if (move_uploaded_file($tmpName, $targetPath)) {
-            $query = "INSERT INTO images (type, rent, place, filename, owner) VALUES('$type', '$rent', '$place', '$fileName','$landlordId')";
-            $result = $conn->query($query);
-            if ($result) {
-                header("Location:upload.php?status=success");
+
+            $query = "INSERT INTO images (type, rent, place, filename, owner,location) 
+                      VALUES ('$type', '$rent', '$place', '$mainTargetPath', '$landlordId', '$location')";
+
+            if ($conn->query($query)) {
+                $house_id = $conn->insert_id;
+
+                $query = "UPDATE landlords SET contact = '$number' WHERE id = '$landlordId'";
+                $conn->query($query);
+
+                if (isset($_FILES['images']) && !empty($_FILES['images']['name'][0]) && !empty($number) || $number == 0) {
+                    foreach ($_FILES['images']['tmp_name'] as $key => $tmp_multi) {
+                        $multiName = $_FILES['images']['name'][$key];
+                        $multiExt = strtolower(pathinfo($multiName, PATHINFO_EXTENSION));
+
+                        if (in_array($multiExt, $allowedTypes)) {
+                            $multiSaveName = time() . "_" . $multiName;
+                            $multiTargetPath = "images/" . $multiSaveName;
+
+                            if (move_uploaded_file($tmp_multi, $multiTargetPath)) {
+                                $sqlMulti = "INSERT INTO propertyimages (houseID, name) 
+                                             VALUES ('$house_id', '$multiTargetPath')";
+                                $conn->query($sqlMulti);
+                            }
+                        }
+                    }
+                }
+
+                echo "<script>
+                        alert('Property and images uploaded successfully!');
+                        window.location.href='landlordpage.php';
+                      </script>";
                 exit();
             } else {
-                header("Location:upload.php?status=could not insert");
-                exit();
+                echo "Database Error: " . $conn->error;
             }
         } else {
-            header("Location:upload.php?status=could not change filepath");
-            exit();
+            echo "<script>alert('Failed to upload main thumbnail.'); window.history.back();</script>";
         }
     } else {
-        header("Location:upload.php?status=unsupported");
-        exit();
+        echo "<script>alert('Invalid file type for main image.'); window.history.back();</script>";
     }
 }

@@ -1,0 +1,50 @@
+<?php
+include("dbconnection.php");
+
+$searchType = $_GET["name"] ?? "";
+$searchPrice = $_GET["price"] ?? "";
+$searcharea = $_GET["area"] ?? "";
+
+$sql = "SELECT * FROM images WHERE 1=1";
+if (!empty($searchType)) {
+    $sql .= " AND type LIKE '%$searchType%'";
+}
+
+if (!empty($searcharea)) {
+    $sql .= " AND location LIKE '%$searcharea%'";
+}
+
+if (!empty($searchPrice)) {
+    $sql .= " AND rent <= " . (int)$searchPrice;
+}
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $name = $row["place"];
+        $type = $row["type"];
+        $rent = $row["rent"];
+        $location = $row["location"];
+        $imagedir = $row["filename"];
+        echo "
+                                    <div class='example'>
+                                        <a href='details.php?id=" . $row['id'] . "'>
+                                            <div class='propImg'>
+                                                <img src='$imagedir'>
+                                            </div>
+                                            </a>
+                                            <div class='overlay'>
+                                                <div class='lowerdesc'>
+                                                    <span class='ppName'>
+                                        <a href='details.php?id=" . $row['id'] . "'>$name</a></span>
+                                                    <span class='location'>$location</span>
+                                                    <span class='lowerdt'>
+                                                        <span class='size'>$type</span>
+                                                        <span class='price'>$rent/month</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                    </div>";
+    }
+} else {
+    echo ("No like that available houses available");
+}

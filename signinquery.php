@@ -55,6 +55,7 @@ if ($user == "student") {
             $row = $res->fetch_assoc();
             session_start();
             $_SESSION["firstName"] = $row["firstName"];
+            $_SESSION["id"] = $row["id"];
             header("location: landlordpage.php");
         }
     }

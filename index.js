@@ -48,3 +48,9 @@ function close() {
   logPage.classList.remove("active");
   signPage.classList.remove("active");
 }
+
+// GO BACK FEATURE
+let back = document.querySelector("#backBtn");
+back.addEventListener("click", function () {
+  window.history.back();
+});
