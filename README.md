@@ -1,6 +1,6 @@
- UniHousing
+ UniNest
 
-UniHousing is a specialized web platform designed to help students at the University find accommodation easily. It connects students directly with local landlords, providing a searchable and verified database of rentals near the campus.
+UniNest is a specialized web platform designed to help students at the University find accommodation easily. It connects students directly with local landlords, providing a searchable and verified database of rentals near the campus.
 
 ## 🚀 Features
 
