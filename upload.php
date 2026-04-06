@@ -11,18 +11,22 @@ if (isset($_POST["submitUpload"])) {
     $landlordId = $_SESSION["id"];
 
 
+    $serverPath = "/app/images/";
     $mainFileName = $_FILES["image"]["name"];
     $mainTmpName = $_FILES["image"]["tmp_name"];
     $mainExt = strtolower(pathinfo($mainFileName, PATHINFO_EXTENSION));
     $allowedTypes = array("jpg", "jpeg", "png", "gif");
-    $mainTargetPath = "images/" . time() . "_" . $mainFileName;
+    $mainTargetPath = $serverPath . time() . "_" . $mainFileName;
+    $dbPath = "images/" . time() . "_" . $mainFileName;
+
+
 
     if (in_array($mainExt, $allowedTypes)) {
         if (move_uploaded_file($mainTmpName, $mainTargetPath)) {
 
 
             $query = "INSERT INTO images (type, rent, place, filename, owner,location) 
-                      VALUES ('$type', '$rent', '$place', '$mainTargetPath', '$landlordId', '$location')";
+                      VALUES ('$type', '$rent', '$place', '$dbPath', '$landlordId', '$')";
 
             if ($conn->query($query)) {
                 $house_id = $conn->insert_id;
@@ -36,12 +40,14 @@ if (isset($_POST["submitUpload"])) {
                         $multiExt = strtolower(pathinfo($multiName, PATHINFO_EXTENSION));
 
                         if (in_array($multiExt, $allowedTypes)) {
-                            $multiSaveName = time() . "_" . $multiName;
-                            $multiTargetPath = "images/" . $multiSaveName;
+                            $timestamp = time();
+                            $multiFileName = $timestamp . "_" . $multiName;
+                            $multiTargetPath = "/app/images/" . $multiFileName;
+                            $multiDbPath = "images/" . $multiFileName;
 
                             if (move_uploaded_file($tmp_multi, $multiTargetPath)) {
                                 $sqlMulti = "INSERT INTO propertyimages (houseID, name) 
-                                             VALUES ('$house_id', '$multiTargetPath')";
+                                             VALUES ('$house_id', '$multiDbPath')";
                                 $conn->query($sqlMulti);
                             }
                         }
