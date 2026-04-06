@@ -26,7 +26,7 @@ if (isset($_POST["submitUpload"])) {
 
 
             $query = "INSERT INTO images (type, rent, place, filename, owner,location) 
-                      VALUES ('$type', '$rent', '$place', '$dbPath', '$landlordId', '$')";
+                      VALUES ('$type', '$rent', '$place', '$dbPath', '$landlordId', '$location')";
 
             if ($conn->query($query)) {
                 $house_id = $conn->insert_id;
